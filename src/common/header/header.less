@@ -1,0 +1,64 @@
+@headerCot: #555566;
+
+.headerWrapper {
+  height: 44px;
+  padding: 8px 20px;
+  box-sizing: border-box;
+  box-shadow: 1px 0px 6px rgba(0 , 0, 0, 0.4);
+  position: relative;
+  .header {
+    max-width: 1060px;
+    min-width: 580px;
+    margin: 0 auto;
+    .logo {
+      width: 94px;
+      height: 28px;
+      background-image: url('https://www.v2ex.com/static/img/v2ex@2x.png');
+      background-size: 94px 30px;
+      background-repeat: no-repeat;
+      display: block;
+      float: left;
+    }
+    .cwp {
+      display: flex;
+      align-items: center;
+      height: 28px;
+    }
+    .searchWrapper {
+      float: left;
+      .search {
+        position: relative;
+        margin-left: 20px;
+        input[type='input'] {
+          border-radius: 14px;
+          border: 1px solid #fff;
+          background-color: rgb(250, 250, 250);
+          outline: none;
+          padding: 6px 0;
+          padding-left: 26px;
+          box-sizing: border-box;
+          transition: all .4s;
+          &:focus {
+            border-color: @headerCot;
+          }
+        }
+        i.iconfont {
+          position: absolute;
+          left: 5px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 24px;
+          color: @headerCot;
+        }
+      }
+    }
+    .menuWrapper {
+      float: right;
+      a {
+        color: @headerCot;
+        text-decoration: none;
+        padding: 6px;
+      }
+    }
+  }
+}
