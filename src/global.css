@@ -10,3 +10,11 @@
 .iconfont {
   font-family: 'iconfont';
 }
+
+.main {
+  background-color: #e2e2e2;
+  border: 1px solid transparent;
+  height: 700px;
+}
+
+/* my antd style */
