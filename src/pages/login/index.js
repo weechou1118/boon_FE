@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Input, Form, Button } from 'antd'
+import axios from 'axios'
 import './login.less'
+import { LOGIN_IN } from '../../store/constants'
 
 const layout = {
   labelCol: { span: 8 },
@@ -12,15 +15,23 @@ const buttonStyle = {
   width: '50%'
 }
 
-const onFinish = values => {
-  console.log('Success:', values);
-}
-
 const onFinishFailed = errorInfo => {
   console.log('Failed:', errorInfo);
 };
 
 class Login extends Component {
+  async onFinish(values) {
+    await axios.post('http://localhost:3001/api/v2/user/loginVerify', {...values})
+    .then(res=>{
+      const data = res.data
+      if (data.code === 200) {
+        const { history } = this.props
+        this.props.handleLoginIn()
+        history.push('/')
+      }
+    })
+    console.log('Success:', values);
+  }
   render() {
     return (  
       <div className='loginWrapper'>
@@ -35,7 +46,7 @@ class Login extends Component {
               {...layout}
               name="basic"
               initialValues={{ remember: true }}
-              onFinish={onFinish}
+              onFinish={this.onFinish.bind(this)}
               onFinishFailed={onFinishFailed}
             >
               <Form.Item
@@ -56,6 +67,7 @@ class Login extends Component {
               <Button type="primary" htmlType="submit" style={{...buttonStyle}}>
                 登录
               </Button>
+              
             </Form>
           </div>
         </div>
@@ -64,4 +76,18 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStates = state => {
+  return {
+    loginState: state.loginState
+  }
+}
+
+const mapDispatchs = dispatch => {
+  return {
+    handleLoginIn() {
+      dispatch({type: LOGIN_IN})
+    }
+  }
+}
+
+export default connect(mapStates, mapDispatchs)(Login);

@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
+import { LOGIN_OUT } from '../../store/constants'
 
 import './header.less'
 
 class Header extends Component {
+  loginout() {
+    const { history } = this.props
+    this.props.handleLoginOut()
+  }
   render() {
     return (
       <nav className='headerWrapper'>
@@ -21,7 +27,12 @@ class Header extends Component {
             <div className='headerRight'>
               <Link to='/'>首页</Link>
               <Link to='/register'>注册</Link>
-              <Link to='/login'>登录</Link>
+              {
+                this.props.loginState===1?
+                <Link to='/loginout' onClick={this.loginout.bind(this)}>登出</Link>
+                :
+                <Link to='/login'>登录</Link>
+              }
             </div>
           </div>
         </div>
@@ -30,4 +41,17 @@ class Header extends Component {
   }
 }
 
-export default Header
+const mapStates = state => {
+  return {
+    loginState: state.loginState
+  }
+}
+
+const mapDispatchs = dispatch => {
+  return {
+    handleLoginOut() {
+      dispatch({type: LOGIN_OUT})
+    }
+  }
+}
+export default connect(mapStates, mapDispatchs)(Header)
