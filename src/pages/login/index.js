@@ -46,13 +46,18 @@ class Login extends Component {
               {...layout}
               name="basic"
               initialValues={{ remember: true }}
+              autoComplete='off'
               onFinish={this.onFinish.bind(this)}
               onFinishFailed={onFinishFailed}
             >
               <Form.Item
                 label="用户名"
                 name="username"
-                rules={[{ required: true, message: '请输入您的用户名!' }]}
+                rules={[
+                  { required: true, message: '请输入您的用户名!' },
+                  { min: 4, message: '长度不得小于4' },
+                  { max: 12, message: '长度不得大于12' },
+                ]}
               >
                 <Input />
               </Form.Item>
