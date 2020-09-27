@@ -19,15 +19,14 @@ const buttonStyle = {
 }
 
 const onFinishFailed = errorInfo => {
-  console.log('Failed:', errorInfo);
+  // console.log('Failed:', errorInfo);
 };
 
 class Register extends Component {
   async onFinish(values) {
-    console.log('a')
-    await axios.post('http://localhost:3001/api/v2/register')
+    await axios.post('http://localhost:3001/api/v2/register', {...values})
     .then(res=> {
-
+      console.log(res)
     })
   }
   render() {
@@ -48,7 +47,7 @@ class Register extends Component {
             >
               <Form.Item
                 label="电子邮箱"
-                name="username"
+                name="email"
                 rules={[
                   { required: true, message: '请输入您的用户名(邮箱)!' },
                   { type: 'email', message: '邮箱格式不正确'}

@@ -7,7 +7,7 @@ import './header.less'
 
 class Header extends Component {
   loginout() {
-    const { history } = this.props
+    // const { history } = this.props
     this.props.handleLoginOut()
   }
   render() {
@@ -26,7 +26,13 @@ class Header extends Component {
           <div className='menuWrapper cwp'>
             <div className='headerRight'>
               <Link to='/'>首页</Link>
-              <Link to='/register'>注册</Link>
+              {
+                this.props.loginState === 1?
+                null
+                :
+                <Link to='/register'>注册</Link>
+              }
+              
               {
                 this.props.loginState===1?
                 <Link to='/loginout' onClick={this.loginout.bind(this)}>登出</Link>

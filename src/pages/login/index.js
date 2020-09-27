@@ -24,10 +24,13 @@ class Login extends Component {
     await axios.post('http://localhost:3001/api/v2/user/loginVerify', {...values})
     .then(res=>{
       const data = res.data
+      console.log(data)
       if (data.code === 200) {
         const { history } = this.props
-        this.props.handleLoginIn()
+        this.props.handleLoginIn(1, data.token)
         history.push('/')
+      } else {
+        alert(data.msg)
       }
     })
     console.log('Success:', values);
@@ -89,8 +92,8 @@ const mapStates = state => {
 
 const mapDispatchs = dispatch => {
   return {
-    handleLoginIn() {
-      dispatch({type: LOGIN_IN})
+    handleLoginIn(loginState, token) {
+      dispatch({type: LOGIN_IN, loginState, token})
     }
   }
 }
