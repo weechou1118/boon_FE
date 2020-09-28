@@ -1,8 +1,13 @@
 import axios from 'axios';
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 import localStorage from 'redux-persist/es/storage';
 import { RESET_USER_STATE } from '../../store/constants'
+
+import Me from '../../common/me'
+import Main from '../../common/main'
+
+import './home.less'
 
 class Home extends Component {
   componentDidMount() {
@@ -16,6 +21,7 @@ class Home extends Component {
       })
     })
     .then(res=> {
+      console.log(res)
       const data = res.data
       if (data.code !== 200) {
         this.props.handleSetUserState(0, '') 
@@ -24,9 +30,12 @@ class Home extends Component {
   }
   render() { 
     return (  
-      <div>
-        this is home
-      </div>
+      <Fragment >
+        <div id="Rightbar">
+          <Me />
+        </div>
+        <Main />
+      </Fragment>
     );
   }
 }

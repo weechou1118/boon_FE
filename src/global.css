@@ -13,10 +13,20 @@
   font-family: 'iconfont';
 }
 
-.main {
+body {
+  min-width: 820px;
+}
+
+.Wrapper {
   background-color: #e2e2e2;
   border: 1px solid transparent;
-  height: 700px;
+  /* max-width: 1100px; */
+}
+.content {
+  min-width: 600px;
+  max-width: 1100px;
+  margin: 20px auto;
+  overflow: hidden;
 }
 /* my antd style */
 .ant-form-item-explain {

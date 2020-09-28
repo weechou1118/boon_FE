@@ -18,12 +18,14 @@ function App() {
       <PersistGate loading={null} persistor={persistor}>
         <Router>
           <Header></Header>
-          <div className='main'>
-            <Route exact path='/' component={Home}></Route>
-            <Route exact path='/login' component={Login}></Route>
-            <Route exact path='/loginout' component={LoginOut}></Route>
-            <Route exact path='/register' component={Register}></Route>
-            <Route exact path='/activate' component={Activate}></Route>
+          <div className='Wrapper'>
+            <div className='content'>
+              <Route exact path='/' component={Home}></Route>
+              <Route exact path='/login' component={Login}></Route>
+              <Route exact path='/loginout' component={LoginOut}></Route>
+              <Route exact path='/register' component={Register}></Route>
+              <Route exact path='/activate' component={Activate}></Route>
+            </div>
           </div>
         </Router>
       </PersistGate>
