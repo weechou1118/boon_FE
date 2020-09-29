@@ -39,25 +39,33 @@ class Me extends Component {
             </tbody>
           </table>
         </div>
-        <div className='cell'>
+        <div className='cell' id='lineWrapper'>
           <div className='line'>
             <div></div>
           </div>
         </div>
         <div className='cell'>
           <table>
-            <tr>
-              <td>
-                <img alt='' width='28' height='28' src='https://www.v2ex.com/static/img/essentials/compose.png?v=b9e1f045f4ad639733bf9f6dbc62ed4c'></img>
-              </td>
-              <td style={{paddingLeft: '10px', color: '#778087'}}>
-                <span>创作新主题</span>
-              </td>
-            </tr>
+            <tbody>
+              <tr>
+                <td>
+                  <img alt='' width='28' height='28' src='https://www.v2ex.com/static/img/essentials/compose.png?v=b9e1f045f4ad639733bf9f6dbc62ed4c'></img>
+                </td>
+                <td style={{paddingLeft: '10px', color: '#778087'}}>
+                  <span>创作新主题</span>
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
         <div className='cell' style={{borderTop: '1px solid rgba(100, 100, 100, 0.4)'}}>
           <span style={{color: '#778087'}}>0&nbsp;条未读提醒</span>
+          <div className='money'>
+            20&nbsp;
+            <img alt='' width='16' height='16' src='https://www.v2ex.com/static/img/silver@2x.png' />
+            11&nbsp;
+            <img alt='' width='16' height='16' src='https://www.v2ex.com/static/img/bronze@2x.png' />
+          </div>
         </div>
       </div>
     );

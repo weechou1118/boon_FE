@@ -30,9 +30,9 @@ class Main extends Component {
             <a href='/'>程序员</a>
           </div>
           {
-            [1,2,3,4,5].map(()=> {
+            [1,2,3,4,5].map(item=> {
               return (
-                <div className='cell item'>
+                <div className='cell item' key={item}>
                   <div className='avatar'>
                     <div style={{'width': '48px', 'height': '48px', 'backgroundColor': 'lightblue', 'borderRadius': '2px'}}></div>
                   </div>
@@ -41,7 +41,7 @@ class Main extends Component {
                     <p><i className='node'>程序员</i>&nbsp;·&nbsp;<strong><a href='/'>leishi1313</a></strong>&nbsp;·&nbsp;25分钟前·最后回复来自<strong><a href='/'>&nbsp;lua</a></strong></p>
                   </div>
                   <div className='commentCount'><a className='count_livid' href='/'>3</a></div>
-                </div> 
+                </div>
               )
             })
           }
