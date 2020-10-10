@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { SET_TOKEN } from '../../store/constants'
+import { SET_TOKEN } from '../../../store/constants'
 import axios from 'axios'
 
 class Activate extends Component {

@@ -26,7 +26,16 @@ class Register extends Component {
   async onFinish(values) {
     await axios.post('http://localhost:3001/api/v2/register', {...values})
     .then(res=> {
-      console.log(res)
+      const data = res.data
+      if (data.code === 200) {
+        const {history} = this.props
+        const email = data.email
+        history.push('/register/success', {
+          email
+        })
+      } else {
+        alert(data.msg)
+      }
     })
   }
   render() {

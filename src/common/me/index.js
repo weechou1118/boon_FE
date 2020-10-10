@@ -58,7 +58,7 @@ class Me extends Component {
             </tbody>
           </table>
         </div>
-        <div className='cell' style={{borderTop: '1px solid rgba(100, 100, 100, 0.4)'}}>
+        <div className='cell'>
           <span style={{color: '#778087'}}>0&nbsp;条未读提醒</span>
           <div className='money'>
             20&nbsp;

@@ -5,7 +5,7 @@ import localStorage from 'redux-persist/es/storage';
 import { RESET_USER_STATE } from '../../store/constants'
 import Hotheme from '../../common/hotheme'
 import Hotnode from '../../common/hotnode'
-import Community from '../../common/community/'
+// import Community from '../../common/community/'
 
 import Me from '../../common/me'
 import Main from '../../common/main'
@@ -46,13 +46,17 @@ class Home extends Component {
           <div className='inner'>
             <span>我收藏的节点</span>
           </div>
+
           <Hotheme />
+
           <Hotnode />
-          <Community />
+
+          {/* <Community /> */}
         </div>
 
+        {/* 因为浮动特性, 需要将main放在浮动元素后面 */}
         <Main />
-
+        
       </Fragment>
     );
   }

@@ -18,17 +18,10 @@ body {
   min-width: 820px;
 }
 
-.Wrapper {
-  background-color: #e2e2e2;
-  border: 1px solid transparent;
-  /* max-width: 1100px; */
-}
-
 .content {
   min-width: 600px;
   max-width: 1100px;
-  margin: 20px auto;
-  overflow: hidden;
+  margin: 0 auto;
 }
 
 /* my antd style */
