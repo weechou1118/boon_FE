@@ -28,13 +28,22 @@ class Header extends Component {
               <Link to='/'>首页</Link>
               {
                 this.props.loginState === 1?
+                <Link to='/'>
+                  <b>{this.props.userInfo.nickname}</b>
+                </Link>
+                :
+                null
+              }
+
+              {
+                this.props.loginState === 1?
                 null
                 :
                 <Link to='/register'>注册</Link>
               }
               
               {
-                this.props.loginState===1?
+                this.props.loginState ===1 ?
                 <Link to='/loginout' onClick={this.loginout.bind(this)}>登出</Link>
                 :
                 <Link to='/login'>登录</Link>
@@ -49,7 +58,8 @@ class Header extends Component {
 
 const mapStates = state => {
   return {
-    loginState: state.loginState
+    loginState: state.loginState,
+    userInfo: state.userInfo
   }
 }
 

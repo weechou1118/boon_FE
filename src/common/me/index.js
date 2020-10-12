@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import './me.less'
 
 class Me extends Component {
@@ -14,7 +15,9 @@ class Me extends Component {
                 </td>
                 <td width='10'></td>
                 <td>
-                  <span>rerorerorero</span>
+                  <span>
+                    {this.props.userInfo.nickname}
+                  </span>
                 </td>
               </tr>
             </tbody>
@@ -71,5 +74,11 @@ class Me extends Component {
     );
   }
 }
+
+const mapStates = state => {
+  return {
+    userInfo: state.userInfo
+  }
+}
  
-export default Me;
+export default connect(mapStates, )(Me);

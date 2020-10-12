@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { Input, Form, Button } from 'antd'
 import axios from 'axios'
 import './login.less'
-import { LOGIN_IN } from '../../store/constants'
+import { LOGIN_IN, SET_USER_INFO } from '../../store/constants'
 
 const layout = {
   labelCol: { span: 8 },
@@ -24,10 +24,10 @@ class Login extends Component {
     await axios.post('http://localhost:3001/api/v2/user/loginVerify', {...values})
     .then(res=>{
       const data = res.data
-      console.log(data)
       if (data.code === 200) {
         const { history } = this.props
         this.props.handleLoginIn(1, data.token)
+        this.props.setUserInfo(data.userInfo)
         history.push('/')
       } else {
         alert(data.msg)
@@ -54,12 +54,10 @@ class Login extends Component {
               onFinishFailed={onFinishFailed}
             >
               <Form.Item
-                label="用户名"
+                label="用户名/邮箱"
                 name="username"
                 rules={[
                   { required: true, message: '请输入您的用户名!' },
-                  { min: 4, message: '长度不得小于4' },
-                  { max: 12, message: '长度不得大于12' },
                 ]}
               >
                 <Input />
@@ -86,7 +84,13 @@ class Login extends Component {
 
 const mapStates = state => {
   return {
-    loginState: state.loginState
+    loginState: state.loginState,
+    token: '',
+    userInfo: {
+      nickname: '',
+      loginTime: '',
+      level: 0    
+    }
   }
 }
 
@@ -94,6 +98,9 @@ const mapDispatchs = dispatch => {
   return {
     handleLoginIn(loginState, token) {
       dispatch({type: LOGIN_IN, loginState, token})
+    },
+    setUserInfo(userInfo) {
+      dispatch({type: SET_USER_INFO, userInfo})
     }
   }
 }
