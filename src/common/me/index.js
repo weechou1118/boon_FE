@@ -16,7 +16,10 @@ class Me extends Component {
                 <td width='10'></td>
                 <td>
                   <span>
-                    {this.props.userInfo.nickname}
+                    {
+
+                      this.props.userInfo.nickname
+                    }
                   </span>
                 </td>
               </tr>

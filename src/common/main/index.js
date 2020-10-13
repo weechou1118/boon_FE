@@ -6,21 +6,6 @@ class Main extends Component {
     return (  
       <div id='Main'>
         <div className='box'>
-          <div id='Tab'>
-            <a href='/' className='tab_current'>技术</a>
-            <a href='/'>技术</a>
-            <a href='/'>技术</a>
-            <a href='/'>技术</a>
-            <a href='/'>技术</a>
-            <a href='/'>技术</a>
-            <a href='/'>技术</a>
-            <a href='/'>技术</a>
-            <a href='/'>技术</a>
-            <a href='/'>技术</a>
-            <a href='/'>技术</a>
-            <a href='/'>技术</a>
-            <a href='/'>技术</a>
-          </div>
           <div id='Cell' className='subTab'>
             <a href='/'>程序员</a>
             <a href='/'>程序员</a>

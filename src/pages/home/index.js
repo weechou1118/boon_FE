@@ -34,18 +34,38 @@ class Home extends Component {
     return (  
       <Fragment >
         <div id="Rightbar">
+          {
+            this.props.loginState === 1?
+            <Me />
+            :
+            <div className='default box'>
+              <div className='cell'>
+                <p>你可以在Boon分享你的创作</p>
+              </div>
+              <div>
+                <a className='registerBtn' href='/register'>现在注册</a>
+                <br />
+                <p style={{'color': '#000'}}>已注册用户请<a href='/login'>登录</a></p>
+              </div>
+            </div>
+          }
 
-          <Me />
-
-          <div style={{'height': '20px'}}></div>
-          <div className='inner'>
-            <i className='iconfont'>&#xe63c;</i>
-            &nbsp;领取今日的登录奖励
-          </div>
-          <div style={{'height': '1px','margin': '20px 0','boxShadow': '0 0 3px rgba(0, 0, 0, .2)'}}></div>
-          <div className='inner'>
-            <span>我收藏的节点</span>
-          </div>
+          {
+            this.props.loginState === 1?
+            <Fragment>
+              <div style={{'height': '20px'}}></div>
+              <div className='inner'>
+                <i className='iconfont'>&#xe63c;</i>
+                &nbsp;领取今日的登录奖励
+              </div>
+              <div style={{'height': '1px','margin': '20px 0','boxShadow': '0 0 3px rgba(0, 0, 0, .2)'}}></div>
+              <div className='inner'>
+                <span>我收藏的节点</span>
+              </div>
+            </Fragment>
+            :
+            null
+          }
 
           <Hotheme />
 
