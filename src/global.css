@@ -9,6 +9,10 @@
     url('//at.alicdn.com/t/font_2093295_6sjelx3uarp.svg#iconfont') format('svg');
 }
 
+@font-face {
+  font-family: 'cangershu';
+  src: url('./static/cangershu.ttf') format('truetype')
+}
 
 .iconfont {
   font-family: 'iconfont';
@@ -16,6 +20,7 @@
 
 body {
   min-width: 820px;
+  font-family: 'cangershu'!important;
 }
 
 .content {
@@ -24,6 +29,14 @@ body {
   margin: 0 auto;
 }
 
+.box {
+  border: 1px solid #ffc408;
+  border-radius: 0 20px 0 20px;
+}
+.box .cell:last-child {
+  border-bottom: 0;
+}
+ 
 /* my antd style */
 .ant-form-item-explain {
   text-align: left;

@@ -6,16 +6,27 @@ import { LOGIN_OUT } from '../../store/constants'
 import './header.less'
 
 class Header extends Component {
+  headerRef = React.createRef();
+  componentDidMount() {
+    const _this = this;
+    window.onscroll = function(e) {
+      const windowHeight = document.documentElement.scrollTop;
+      if (windowHeight >= 100) {
+        _this.headerRef.current.classList.add('fixed');
+      } else {
+        _this.headerRef.current.classList.remove('fixed')
+      }
+    }
+  }
   loginout() {
-    // const { history } = this.props
     this.props.handleLoginOut()
   }
   render() {
     return (
       <Fragment>
-        <header id='Top'>
+        <header id='Top' ref={this.headerRef}>
           <div className='header'>
-            <div className='logo'></div>
+            <a href='/'><div className='logo'></div></a>
             <div className='headerLeft'>
               <div className='searchWrapper cwp'>
                 <div className='search'>
@@ -53,7 +64,7 @@ class Header extends Component {
             </div>
           </div>
         </header>
-        <nav>
+        <nav ref={this.navRef}>
           <div id='Tab'>
             <a href='/' className='tab_current'>推荐</a>
             <a href='/'>前端</a>
