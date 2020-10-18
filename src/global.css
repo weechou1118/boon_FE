@@ -19,12 +19,12 @@
 }
 
 body {
-  min-width: 820px;
+  min-width: 300px;
   font-family: 'cangershu'!important;
 }
 
 .content {
-  min-width: 600px;
+  /* min-width: 600px; */
   max-width: 1100px;
   margin: 0 auto;
 }

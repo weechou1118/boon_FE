@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { LOGIN_OUT } from '../../store/constants'
 
 import './header.less'
@@ -14,7 +14,7 @@ class Header extends Component {
       if (windowHeight >= 100) {
         _this.headerRef.current.classList.add('fixed');
       } else {
-        _this.headerRef.current.classList.remove('fixed')
+        _this.headerRef.current.classList.remove('fixed');
       }
     }
   }
@@ -26,7 +26,7 @@ class Header extends Component {
       <Fragment>
         <header id='Top' ref={this.headerRef}>
           <div className='header'>
-            <a href='/'><div className='logo'></div></a>
+            <a href='/' className='logo'><div></div></a>
             <div className='headerLeft'>
               <div className='searchWrapper cwp'>
                 <div className='search'>
@@ -62,17 +62,29 @@ class Header extends Component {
                 }
               </div>
             </div>
+            <div className='avatar'>
+                <img alt='' src={this.props.avatarUrl} />
+            </div>
           </div>
         </header>
-        <nav ref={this.navRef}>
-          <div id='Tab'>
-            <a href='/' className='tab_current'>推荐</a>
-            <a href='/'>前端</a>
-            <a href='/'>后端</a>
-            <a href='/'>开发工具</a>
-            <a href='/'>阅读</a>
-          </div>
-        </nav>
+        {
+          this.props.history.location.pathname === '/'?
+          <nav ref={this.navRef}>
+            <div id='Tab'>
+              <a href='/' className='tab_current'>推荐</a>
+              <a href='/'>前端</a>
+              <a href='/'>后端</a>
+              <a href='/'>开发工具</a>
+              <a href='/'>阅读</a>
+              <a href='/'>阅读</a>
+              <a href='/'>阅读</a>
+              <a href='/'>阅读</a>
+              <a href='/'>阅读</a>
+            </div>
+          </nav>
+          :
+          null
+        }
       </Fragment>
     )
   }
@@ -81,7 +93,8 @@ class Header extends Component {
 const mapStates = state => {
   return {
     loginState: state.loginState,
-    userInfo: state.userInfo
+    userInfo: state.userInfo,
+    avatarUrl: state.avatarUrl
   }
 }
 
@@ -92,4 +105,4 @@ const mapDispatchs = dispatch => {
     }
   }
 }
-export default connect(mapStates, mapDispatchs)(Header)
+export default withRouter(connect(mapStates, mapDispatchs)(Header))

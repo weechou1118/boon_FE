@@ -3,11 +3,12 @@ import * as constants from './constants'
 const defaultState = {
   loginState: 0,
   token: '',
+  avatarUrl: 'https://s1.ax1x.com/2020/10/16/0b9dYR.jpg',
   userInfo: {
     nickname: '',
     loginTime: '',
     level: 0    
-  }
+  },
 }
 
 export default (state = defaultState, action) => {

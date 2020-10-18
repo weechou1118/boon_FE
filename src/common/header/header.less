@@ -1,15 +1,31 @@
 @headerCot: #ffc408;
 
+@media screen and (max-width: 800px) {
+  header#Top{
+    .logo {
+      display: block;
+      margin-right: auto;
+      background-size: 78px 25px!important;
+    }
+    .searchWrapper {
+      width: auto!important;
+
+      input {
+        width: 100%;
+      }
+    }
+    .menuWrapper {
+      display: none!important;
+    }
+  }
+}
+
 header#Top {
   background-color: #ffc408;
   height: 60px;
-  padding: 8px 20px;
-  box-sizing: border-box;
   // box-shadow: 1px 0px 6px rgba(0 , 0, 0, 0.4);
   position: fixed;
   width: 100%;
-  display: flex;
-  align-items: center;
   border-bottom: 1px solid #e2e2e2;
   transition: all .5s;
 
@@ -34,6 +50,20 @@ header#Top {
     max-width: 1060px;
     width: 100%;
     margin: 0 auto;
+    display: flex;
+    align-items: center;
+    padding: 8px 20px;
+    box-sizing: border-box;
+    height: 60px;
+
+    .avatar {
+      img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        margin: 0 -10px 0 10px;
+      }
+    }
 
     .logo {
       width: 88px;
@@ -42,7 +72,6 @@ header#Top {
       background-size: 88px 28px;
       background-repeat: no-repeat;
       display: block;
-      float: left;
     }
 
     .cwp {
@@ -53,24 +82,21 @@ header#Top {
 
     .searchWrapper {
       float: left;
+      width: 200px;
 
       .search {
         position: relative;
         margin-left: 20px;
 
         input[type='input'] {
+          width: 100%;
           border-radius: 14px;
           border: 1px solid #fff;
           background-color: rgb(250, 250, 250);
           outline: none;
-          padding: 0 0 0 26px;
+          padding: 5px 10px 5px 26px;
           box-sizing: border-box;
           transition: all .2s;
-
-          &:focus {
-            // border-color: @headerCot;
-            padding: 6px 0 6px 26px;
-          }
         }
 
         i.iconfont {
@@ -85,7 +111,7 @@ header#Top {
     }
 
     .menuWrapper {
-      float: right;
+      margin-left: auto;
 
       a {
         color: #fff;
@@ -137,6 +163,10 @@ nav {
     margin: 0 auto;
     box-sizing: border-box;
     transition: all .5s;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+    height: 40px;
 
     a {
       // padding-right: 10px;

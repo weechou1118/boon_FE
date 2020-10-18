@@ -40,7 +40,7 @@ class Home extends Component {
             :
             <div className='default box'>
               <div className='cell'>
-                <p>你可以在Boon分享你的创作</p>
+                <p>你可以在HOI分享你的创作</p>
               </div>
               <div>
                 <a className='registerBtn' href='/register'>现在注册</a>
