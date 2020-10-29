@@ -1,12 +1,12 @@
 @font-face {
   font-family: 'iconfont';
   /* project id 2093295 */
-  src: url('//at.alicdn.com/t/font_2093295_6sjelx3uarp.eot');
-  src: url('//at.alicdn.com/t/font_2093295_6sjelx3uarp.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_2093295_6sjelx3uarp.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_2093295_6sjelx3uarp.woff') format('woff'),
-    url('//at.alicdn.com/t/font_2093295_6sjelx3uarp.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_2093295_6sjelx3uarp.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_2093295_9bvssjeqlgd.eot');
+  src: url('//at.alicdn.com/t/font_2093295_9bvssjeqlgd.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_2093295_9bvssjeqlgd.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_2093295_9bvssjeqlgd.woff') format('woff'),
+    url('//at.alicdn.com/t/font_2093295_9bvssjeqlgd.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_2093295_9bvssjeqlgd.svg#iconfont') format('svg');
 }
 
 @font-face {
@@ -19,8 +19,8 @@
 }
 
 body {
-  min-width: 300px;
-  font-family: 'cangershu'!important;
+  min-width: 400px;
+  font-family: 'cangershu' !important;
 }
 
 .content {
@@ -32,11 +32,17 @@ body {
 .box {
   border: 1px solid #ffc408;
   border-radius: 0 20px 0 20px;
+  margin-top: 20px;
 }
+
+.box .cell {
+  border-bottom: 1px solid #e2e2e2;
+}
+
 .box .cell:last-child {
   border-bottom: 0;
 }
- 
+
 /* my antd style */
 .ant-form-item-explain {
   text-align: left;

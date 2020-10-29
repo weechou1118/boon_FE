@@ -13,6 +13,7 @@ import Register from './pages/register'
 import LoginOut from './pages/loginout'
 import Activate from './pages/register/activate'
 import Success from './pages/register/success'
+import Article from './pages/article'
 
 import './wrapper.less'
 
@@ -33,6 +34,7 @@ function App() {
                 <Route exact path='/register' component={Register}></Route>
                 <Route exact path='/register/activate' component={Activate}></Route>
                 <Route exact path='/register/success' component={Success}></Route>
+                <Route exact path='/article' component={Article}></Route>
               </div>
             </div>
             <Footer />

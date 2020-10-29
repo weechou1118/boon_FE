@@ -76,10 +76,6 @@ class Header extends Component {
               <a href='/'>后端</a>
               <a href='/'>开发工具</a>
               <a href='/'>阅读</a>
-              <a href='/'>阅读</a>
-              <a href='/'>阅读</a>
-              <a href='/'>阅读</a>
-              <a href='/'>阅读</a>
             </div>
           </nav>
           :

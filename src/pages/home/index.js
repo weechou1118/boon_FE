@@ -3,12 +3,12 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 import localStorage from 'redux-persist/es/storage';
 import { RESET_USER_STATE } from '../../store/constants'
-import Hotheme from '../../common/hotheme'
-import Hotnode from '../../common/hotnode'
+import Hotheme from '../../components/hotheme'
+// import Hotnode from '../../common/hotnode'
 // import Community from '../../common/community/'
 
-import Me from '../../common/me'
-import Main from '../../common/main'
+import Me from '../../components/me'
+import Main from '../../components/main'
 
 import './home.less'
 
@@ -69,13 +69,14 @@ class Home extends Component {
 
           <Hotheme />
 
-          <Hotnode />
+          {/* <Hotnode /> */}
 
           {/* <Community /> */}
         </div>
 
         {/* 因为浮动特性, 需要将main放在浮动元素后面 */}
-        <Main />
+        {/* 子组件的props需要由父组件传入 */}
+        <Main {...this.props}/>
         
       </Fragment>
     );

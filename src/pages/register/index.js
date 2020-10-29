@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Input, Form, Button, Checkbox } from 'antd'
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 
 import './register.less'
@@ -43,7 +44,9 @@ class Register extends Component {
       <div className='registerWrapper'>
         <div className='register'>
           <div className='title'>
-
+            <Link to='/'>Home</Link>
+            <i>›</i>
+            <span>注册</span>
           </div>
           <div className='content' style={{'textAlign': 'center'}}>
             <Form
@@ -81,7 +84,7 @@ class Register extends Component {
                 valuePropName="checked"
                 rules={[{ required: true, message: '您未同意《》' }]}
               >
-                <Checkbox>我已阅读《》并同意</Checkbox>
+                <Checkbox>我已阅读《相关条约》并同意</Checkbox>
               </Form.Item>
               <Button type="primary" htmlType="submit" style={{...buttonStyle}}>
                 注册

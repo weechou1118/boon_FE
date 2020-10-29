@@ -7,6 +7,7 @@ class Main extends Component {
     super()
     this.sortHot = this.sortHot.bind(this)
     this.sortLatest = this.sortLatest.bind(this)
+    this.goArticle = this.goArticle.bind(this)
     this.state = {
       news: [
         {
@@ -60,6 +61,9 @@ class Main extends Component {
       news
     })
   }
+  goArticle() {
+    this.props.history.push('/article')
+  }
   render() { 
     return (  
       <div id='Main'>
@@ -71,7 +75,7 @@ class Main extends Component {
           {
             this.state.news.map((item, index)=> {
               return (
-                <div className='cell item' key={index} onClick={(e)=>{e.stopPropagation();console.log('a')}}>
+                <div onClick={this.goArticle} ref={div => this.vlink = div} to='/login' className='cell item' key={index}>
                   <a href='/'><div className='avatar'></div></a>
                   <div className='itemContent'>
                     <p>{item.title}</p>
