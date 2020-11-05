@@ -11,6 +11,7 @@ class Main extends Component {
     this.state = {
       news: [
         {
+          id: 15345234,
           title: '一个美国小码农眼中的硅谷',
           tag: '程序员',
           po: 'leshi1122',
@@ -20,6 +21,7 @@ class Main extends Component {
           sortt: 1
         },
         {
+          id: 26563452,
           title: '如果不考虑工资,你最想从事哪种职业',
           tag: '程序员',
           po: 'tonnycao',
@@ -61,8 +63,8 @@ class Main extends Component {
       news
     })
   }
-  goArticle() {
-    this.props.history.push('/article')
+  goArticle(e) {
+    this.props.history.push('/article/' + e.target.closest('.item').getAttribute('data-article-id'))
   }
   render() { 
     return (  
@@ -75,10 +77,10 @@ class Main extends Component {
           {
             this.state.news.map((item, index)=> {
               return (
-                <div onClick={this.goArticle} ref={div => this.vlink = div} to='/login' className='cell item' key={index}>
+                <div data-article-id={item.id} onClick={(e) => this.goArticle(e)} ref={div => this.vLink=div} to='/login' className='cell item' key={index}>
                   <a href='/'><div className='avatar'></div></a>
                   <div className='itemContent'>
-                    <p>{item.title}</p>
+                    <a href={'/article/' + item.id}>{item.title}</a>
                     <p><i className='node'>{item.tag}</i>&nbsp;·&nbsp;<strong><a href='/'>{item.po}</a></strong>&nbsp;·&nbsp;{item.punish_time}</p>
                   </div>
                   <div className='countsBox'>

@@ -62,9 +62,14 @@ class Header extends Component {
                 }
               </div>
             </div>
-            <div className='avatar'>
+            {
+              this.props.loginState === 1?
+              <div className='avatar'>
                 <img alt='' src={this.props.avatarUrl} />
-            </div>
+              </div>
+              :
+              null
+            }
           </div>
         </header>
         {

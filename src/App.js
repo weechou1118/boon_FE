@@ -34,7 +34,7 @@ function App() {
                 <Route exact path='/register' component={Register}></Route>
                 <Route exact path='/register/activate' component={Activate}></Route>
                 <Route exact path='/register/success' component={Success}></Route>
-                <Route exact path='/article' component={Article}></Route>
+                <Route exact path='/article/:id' component={Article}></Route>
               </div>
             </div>
             <Footer />
