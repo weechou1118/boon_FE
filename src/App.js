@@ -19,14 +19,14 @@ import './wrapper.less'
 
 const Login = lazy(() => import(/* webpackChunkName: "login" */'./pages/login'))
 
-function App() {
+function App(props) {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Router>
           <Suspense fallback={<div>loading...</div>}>
             <Header />
-            <div id='Wrapper'>
+            <div id='Wrapper' className={props.history}>
               <div className='content'>
                 <Route exact path='/' component={Home}></Route>
                 <Route exact path='/login' component={Login}></Route>

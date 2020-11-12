@@ -27,12 +27,12 @@ body {
   /* min-width: 600px; */
   max-width: 1100px;
   margin: 0 auto;
+  margin-top: 20px;
 }
 
 .box {
   border: 1px solid #ffc408;
   border-radius: 0 20px 0 20px;
-  margin-top: 20px;
 }
 
 .box .cell {
@@ -41,6 +41,16 @@ body {
 
 .box .cell:last-child {
   border-bottom: 0;
+}
+
+.levelTag {
+  background-color: lightblue;
+  color: #fff;
+  border-radius: 2px;
+  padding: 0 1px;
+  font-weight: 1000;
+  font-size: 12px;
+  margin-left: 4px;
 }
 
 /* my antd style */

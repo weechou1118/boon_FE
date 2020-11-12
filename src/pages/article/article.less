@@ -2,19 +2,20 @@
   max-width: 960px;
   position: relative;
   margin: 0 auto;
-  height: 200px;
+  margin-top: -30px;
   .main-area {
-    width: 700px;
-    height: 200px;
-    border: 1px solid red;
+    width: auto;
+    margin: 0 310px 0 20px;
     max-width: 100%;
+    &.article-area {
+      min-height: 200px;
+      background-color: #fff;
+      border-radius: 0 20px 0 20px;
+    }
   }
   .sidebar {
-    position: absolute;
-    top: 0;
-    right: 0;
-    height: 100px;
-    width: 240px;
-    border: 1px solid red;
+    width: 270px;
+    float: right;
+    margin-right: 20px;
   }
 }
