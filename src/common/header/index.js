@@ -2,11 +2,30 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import { LOGIN_OUT } from '../../store/constants'
+import {Menu, Dropdown} from 'antd'
+import {DownOutlined} from '@ant-design/icons'
+import '../../../node_modules/antd/dist/antd.css'
 
 import './header.less'
 
 class Header extends Component {
   headerRef = React.createRef();
+  state = {
+    dropdown: ['item1', 'item2', 'item3']
+  }
+  menu = (
+    <Menu>
+      {
+        this.state.dropdown.map((item, index) => {
+          return (
+            <Menu.Item key={index}>
+              {item}
+            </Menu.Item>
+          )
+        })
+      }
+    </Menu>
+  )
   componentDidMount() {
     const _this = this;
     window.onscroll = function(e) {
@@ -20,6 +39,9 @@ class Header extends Component {
   }
   loginout() {
     this.props.handleLoginOut()
+  }
+  handleMenuClick() {
+    console.log('a')
   }
   render() {
     return (
@@ -40,20 +62,26 @@ class Header extends Component {
                 <Link to='/'>首页</Link>
                 {
                   this.props.loginState === 1?
+                  <Dropdown trigger={['click']} overlay={this.menu}>
+                    <a onClick={(e) => e.preventDefault()} href="/#">开始创作<DownOutlined /></a>
+                  </Dropdown>
+                  :
+                  null
+                }
+                {
+                  this.props.loginState === 1?
                   <Link to='/'>
                     <b>{this.props.userInfo.nickname}</b>
                   </Link>
                   :
                   null
                 }
-
                 {
                   this.props.loginState === 1?
                   null
                   :
                   <Link to='/register'>注册</Link>
                 }
-                
                 {
                   this.props.loginState ===1 ?
                   <Link to='/loginout' onClick={this.loginout.bind(this)}>登出</Link>

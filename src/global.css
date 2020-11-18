@@ -31,8 +31,9 @@ body {
 }
 
 .box {
-  border: 1px solid #ffc408;
-  border-radius: 0 20px 0 20px;
+  /* border: 1px solid #ffc408; */
+  box-shadow: 0 0 4px #ffc408!important;
+  border-radius: 20px;
 }
 
 .box .cell {
