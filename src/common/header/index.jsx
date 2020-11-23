@@ -4,7 +4,6 @@ import { Link, withRouter } from 'react-router-dom'
 import { LOGIN_OUT } from '../../store/constants'
 import {Menu, Dropdown} from 'antd'
 import {DownOutlined} from '@ant-design/icons'
-import '../../../node_modules/antd/dist/antd.css'
 
 import './header.less'
 
@@ -41,7 +40,7 @@ class Header extends Component {
     this.props.handleLoginOut()
   }
   handleMenuClick() {
-    console.log('a')
+      console.log('a')
   }
   render() {
     return (
