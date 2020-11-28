@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter, NavLink } from 'react-router-dom'
 import { LOGIN_OUT } from '../../store/constants'
-import {Menu, Dropdown} from 'antd'
+import {Menu} from 'antd'
 import {DownOutlined} from '@ant-design/icons'
 
 import './header.less'
@@ -10,21 +10,10 @@ import './header.less'
 class Header extends Component {
   headerRef = React.createRef();
   state = {
-    dropdown: ['item1', 'item2', 'item3']
+    dropdown: ['item1', 'item2', 'item3'],
+    menus: ['前端', '后端', '开发工具', '阅读']
   }
-  menu = (
-    <Menu>
-      {
-        this.state.dropdown.map((item, index) => {
-          return (
-            <Menu.Item key={index}>
-              {item}
-            </Menu.Item>
-          )
-        })
-      }
-    </Menu>
-  )
+  verticalMenuRef = null
   componentDidMount() {
     const _this = this;
     window.onscroll = function(e) {
@@ -39,10 +28,25 @@ class Header extends Component {
   loginout() {
     this.props.handleLoginOut()
   }
-  handleMenuClick() {
-      console.log('a')
+  showVerticalMenu() {
+    let vmrc = this.verticalMenuRef.classList
+    vmrc.contains('hidden')?vmrc.remove('hidden'):vmrc.add('hidden')
+    
   }
   render() {
+    const menu = (
+      <Menu>
+        {
+          this.state.dropdown.map((item, index) => {
+            return (
+              <Menu.Item key={index}>
+                {item}
+              </Menu.Item>
+            )
+          })
+        }
+      </Menu>
+    )
     return (
       <Fragment>
         <header id='Top' ref={this.headerRef}>
@@ -51,7 +55,7 @@ class Header extends Component {
             <div className='headerLeft'>
               <div className='searchWrapper cwp'>
                 <div className='search'>
-                  <input type='input'  />
+                  <input type='input' />
                   <i className='iconfont'>&#xe682;</i>
                 </div>
               </div>
@@ -61,9 +65,7 @@ class Header extends Component {
                 <Link to='/'>首页</Link>
                 {
                   this.props.loginState === 1?
-                  <Dropdown trigger={['click']} overlay={this.menu}>
-                    <a onClick={(e) => e.preventDefault()} href="/#">开始创作<DownOutlined /></a>
-                  </Dropdown>
+                  <NavLink to='/new'>开始创作<DownOutlined /></NavLink>
                   :
                   null
                 }
@@ -91,8 +93,13 @@ class Header extends Component {
             </div>
             {
               this.props.loginState === 1?
-              <div className='avatar'>
+              <div className='avatar' onClick={this.showVerticalMenu.bind(this)}>
                 <img alt='' src={this.props.avatarUrl} />
+                <div className='verticalMenu hidden' ref={menu =>this.verticalMenuRef=menu}>
+                  <p><NavLink to='/'>个人主页</NavLink></p>
+                  <p><NavLink to='/new'>写文章</NavLink></p>
+                  <p><Link to='/loginout'>登出</Link></p>
+                </div>
               </div>
               :
               null
@@ -103,11 +110,11 @@ class Header extends Component {
           this.props.history.location.pathname === '/'?
           <nav ref={this.navRef}>
             <div id='Tab'>
-              <a href='/' className='tab_current'>推荐</a>
-              <a href='/'>前端</a>
-              <a href='/'>后端</a>
-              <a href='/'>开发工具</a>
-              <a href='/'>阅读</a>
+              <NavLink to='/' className='active'>推荐</NavLink>
+              <NavLink className='menu-link' activeClassName='active' to='/qd'>前端</NavLink>
+              <NavLink className='menu-link' activeClassName='active' to='/hd'>后端</NavLink>
+              <NavLink className='menu-link' activeClassName='active' to='/gj'>工具</NavLink>
+              <NavLink className='menu-link' activeClassName='active' to='/yd'>阅读</NavLink>
             </div>
           </nav>
           :
