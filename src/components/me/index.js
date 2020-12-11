@@ -17,7 +17,6 @@ class Me extends Component {
                 <td>
                   <span>
                     {
-
                       this.props.userInfo.nickname
                     }
                   </span>

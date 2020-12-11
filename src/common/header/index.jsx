@@ -2,8 +2,8 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 import { Link, withRouter, NavLink } from 'react-router-dom'
 import { LOGIN_OUT } from '../../store/constants'
-import {Menu} from 'antd'
-import {DownOutlined} from '@ant-design/icons'
+import {Menu, Dropdown} from 'antd'
+import {DownOutlined, UnorderedListOutlined } from '@ant-design/icons'
 
 import './header.less'
 
@@ -34,19 +34,36 @@ class Header extends Component {
     
   }
   render() {
+    // const menu = (
+    //   <Menu>
+    //     {
+    //       this.state.dropdown.map((item, index) => {
+    //         return (
+    //           <Menu.Item key={index}>
+    //             {item}
+    //           </Menu.Item>
+    //         )
+    //       })
+    //     }
+    //   </Menu>
+    // )
     const menu = (
       <Menu>
-        {
-          this.state.dropdown.map((item, index) => {
-            return (
-              <Menu.Item key={index}>
-                {item}
-              </Menu.Item>
-            )
-          })
-        }
+        <Menu.Item key="1">
+          <Link to="/login">去登录</Link>
+        </Menu.Item>
+        <Menu.Divider />
+        <Menu.Item key="3">
+          <Link to="/register">去注册</Link>
+        </Menu.Item>
       </Menu>
     )
+    const styles = {
+      color: '#fff',
+      fontWeight: 'bold',
+      fontSize: 30,
+      marginLeft: 5
+    }
     return (
       <Fragment>
         <header id='Top' ref={this.headerRef}>
@@ -59,6 +76,13 @@ class Header extends Component {
                   <i className='iconfont'>&#xe682;</i>
                 </div>
               </div>
+              {
+                this.props.loginState === 1?
+                null:
+                <Dropdown overlay={menu} trigger={['click']}>
+                  <UnorderedListOutlined id='ScreenSmallSizeList' style={{...styles}}/>
+                </Dropdown>
+              }
             </div>
             <div className='menuWrapper cwp'>
               <div className='headerRight'>
@@ -98,7 +122,7 @@ class Header extends Component {
                 <div className='verticalMenu hidden' ref={menu =>this.verticalMenuRef=menu}>
                   <p><NavLink to='/'>个人主页</NavLink></p>
                   <p><NavLink to='/new'>写文章</NavLink></p>
-                  <p><Link to='/loginout'>登出</Link></p>
+                  <p><Link to='/loginout' onClick={this.loginout.bind(this)}>登出</Link></p>
                 </div>
               </div>
               :

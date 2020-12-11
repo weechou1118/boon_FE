@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { Input, Form, Button } from 'antd'
+import { Input, Form, Button, notification } from 'antd'
 import axios from 'axios'
 import './login.less'
 import { LOGIN_IN, SET_USER_INFO } from '../../store/constants'
@@ -34,6 +34,18 @@ class Login extends Component {
       }
     })
     console.log('Success:', values);
+  }
+  componentDidMount() {
+    const flag = this.props.location.search.split('=').pop()
+    if (flag === 'plzlogin') {
+      notification.warning({
+        message: '请先登录',
+        // description: '请先登录',
+        onClick: () => {
+          console.log('Notification Clicked!');
+        },
+      });
+    }
   }
   render() {
     return (  

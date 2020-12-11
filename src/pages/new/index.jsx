@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {UnControlled as CodeMirror} from 'react-codemirror2'
 import {Button, Dropdown, Menu} from 'antd'
 import {DownOutlined, UserOutlined} from '@ant-design/icons'
+import {connect} from 'react-redux'
 import axios from 'axios'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/lib/codemirror.js'
@@ -20,6 +21,12 @@ class New extends Component {
         selectTheme: ''
       }
     }
+  }
+  componentDidMount() {
+    if (this.props.loginState !== 1) {
+      this.props.history.push('/login?from=plzlogin')
+    }
+    return
   }
   publish() {
     axios.post('http://localhost:3001/api/v2/article/new', {
@@ -88,5 +95,10 @@ class New extends Component {
     );
   }
 }
+const mapState = state => {
+  return {
+    loginState: state.loginState
+  }
+}
  
-export default New;
+export default connect(mapState)(New);

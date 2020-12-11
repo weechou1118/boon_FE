@@ -3,12 +3,13 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 import localStorage from 'redux-persist/es/storage';
 import { RESET_USER_STATE } from '../../store/constants'
-import Hotheme from '../../components/hotheme'
-// import Hotnode from '../../common/hotnode'
-// import Community from '../../common/community/'
 
 import Me from '../../components/me'
 import Main from '../../components/main'
+import Hotheme from '../../components/hotheme'
+import UnLoginMe from '../../components/unLoginMe'
+// import Hotnode from '../../common/hotnode'
+// import Community from '../../common/community/'
 
 import './home.less'
 
@@ -38,16 +39,7 @@ class Home extends Component {
             this.props.loginState === 1?
             <Me />
             :
-            <div className='default box'>
-              <div className='cell'>
-                <p>你可以在HOI分享你的创作</p>
-              </div>
-              <div>
-                <a className='registerBtn' href='/register'>现在注册</a>
-                <br />
-                <p style={{'color': '#000'}}>已注册用户请<a href='/login'>登录</a></p>
-              </div>
-            </div>
+            <UnLoginMe />
           }
 
           {

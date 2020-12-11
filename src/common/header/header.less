@@ -1,8 +1,14 @@
 @headerCot: #ffc408;
 @media screen and (max-width: 800px) {
+  #ScreenSmallSizeList {
+    display: block!important;
+  }
   header#Top{
     position: relative;
     min-width: 400px;
+    .header {
+      padding: 8px 15px!important;
+    }
     .logo {
       display: block;
       margin-right: auto;
@@ -13,6 +19,7 @@
 
       input {
         width: 100%;
+        max-width: 200px;
       }
     }
     .menuWrapper {
@@ -84,6 +91,13 @@ header#Top {
     padding: 8px 20px;
     box-sizing: border-box;
     height: 60px;
+    .headerLeft {
+      display: flex;
+      align-items: center;
+      #ScreenSmallSizeList {
+        display: none;
+      }
+    }
 
     .avatar {
       display: none;
@@ -107,7 +121,6 @@ header#Top {
     .cwp {
       display: flex;
       align-items: center;
-      height: 28px;
     }
 
     .searchWrapper {
