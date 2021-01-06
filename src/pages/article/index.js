@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import MainDetail from '../../components/mainDetail'
+import CommentTable from '../../components/commentTable'
+import CommentNew from '../../components/commentNew/'
 import Me from '../../components/me'
 import UnLoginMe from '../../components/unLoginMe'
 import './article.less'
 
 class Article extends Component {
   render() { 
-    return (  
+    return (
       <div className='container main-container'>
         <div className='sidebar'>
           {
@@ -19,6 +21,10 @@ class Article extends Component {
         </div>
         <div id='Main' className='main-area article-area'>
           <MainDetail {...this.props}/>
+          <div className='sep20'></div>
+          <CommentTable {...this.props}/>
+          <div className='sep20'></div>
+          <CommentNew {...this.props}/>
         </div>
       </div>
     );

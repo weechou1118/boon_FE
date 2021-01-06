@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react';
 import axios from 'axios'
+import {BASE_URL} from '../../base'
 import './detail.less'
 
 class MainDetail extends Component {
@@ -14,7 +15,7 @@ class MainDetail extends Component {
   }
   componentDidMount() {
     const {match} = this.props
-    axios.get('http://localhost:3001/api/v2/article/' + match.params.id, {})
+    axios.get(`${BASE_URL}/api/v2/article/` + match.params.id, {})
     .then(res => {
       this.setState({
         article: res.data,
@@ -24,7 +25,7 @@ class MainDetail extends Component {
   }
   render() { 
     const {title, content, createdAt, author} = this.state.article
-    console.log(this.state.article)
+    // console.log(this.state.article)
     return (  
       <div className='box'>
         <header>

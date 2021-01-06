@@ -26,6 +26,7 @@ class Header extends Component {
     }
   }
   loginout() {
+    localStorage.clear()
     this.props.handleLoginOut()
   }
   showVerticalMenu() {

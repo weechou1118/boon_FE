@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {BASE_URL} from '../../base'
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 import localStorage from 'redux-persist/es/storage';
@@ -18,7 +19,7 @@ class Home extends Component {
     localStorage.getItem('persist:root')
     .then(res=> {
       const token = this.props.token
-      return axios.post('http://localhost:3001/api/v2/tokenVerify',{},{
+      return axios.post(`${BASE_URL}/api/v2/tokenVerify`,{},{
         headers:{
           'Authorization': 'Basic ' + token
         }

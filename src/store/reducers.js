@@ -5,6 +5,8 @@ const defaultState = {
   token: '',
   avatarUrl: 'https://s1.ax1x.com/2020/10/16/0b9dYR.jpg',
   userInfo: {
+    id: '',
+    uId: '',
     nickname: '',
     loginTime: '',
     level: 0    

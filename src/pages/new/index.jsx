@@ -4,6 +4,7 @@ import {Button, Dropdown, Menu} from 'antd'
 import {DownOutlined, UserOutlined} from '@ant-design/icons'
 import {connect} from 'react-redux'
 import axios from 'axios'
+import {BASE_URL} from '../../base'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/lib/codemirror.js'
 import './new.less'
@@ -18,34 +19,70 @@ class New extends Component {
         title: '',
         author: '',
         content: '',
-        selectTheme: ''
+        selectTheme: '',
       }
     }
+    this.updateStateData = this.updateStateData.bind(this)
+    this.formVerify = this.formVerify.bind(this)
+    this.publish = this.publish.bind(this)
   }
   componentDidMount() {
+    const data = this.state.data
     if (this.props.loginState !== 1) {
       this.props.history.push('/login?from=plzlogin')
     }
+    data.author = this.props.userInfo.nickname
+    data.uId = this.props.userInfo.uId
+    data.id = this.props.userInfo.id
+    console.log(data.uId)
+    this.setState({
+      data
+    })
     return
   }
   publish() {
-    axios.post('http://localhost:3001/api/v2/article/new', {
+    axios.post(`${BASE_URL}/api/v2/article/new`, {
       ...this.state.data
     }).then(res => {
       const data = res.data
-      console.log(data)
-    })
-  }
-  switchTheme({key}) {
-    this.setState({
-      data: {
-        selectTheme: this.state.themes[key]
+      if(data.code !== 400) {
+        alert('文章发布成功!')
+        console.log(data)
+        // this.props.history.push('/')
       }
     })
   }
-  updateWordCount(editor, data, content) {
+  switchTheme({key}) {
+    this.updateStateData('selectTheme', this.state.themes[key])
+    this.themeNode.innerHTML = this.state.data.selectTheme
+  }
+  updateTitle(e) {
+    let title = e.target.value
+    this.updateStateData('title', title)
+  }
+  updateWordCount(editor, anothorData, content) {
+   this.updateStateData('content', content)
+  }
+  updateTheme(e) {
+    let selectTheme = e.target.value
+    this.updateStateData('selectTheme', selectTheme)
+  }
+  formVerify(e) {
+    e.preventDefault()
+    const data = this.state.data
+    for (let key in data) {
+      if (!data[key]) {
+        alert(`请将信息填写完整:${key}`)
+        return
+      }
+    }
+    this.publish()
+  }
+  updateStateData(key, value) {
+    const data = this.state.data
+    data[key] = value
     this.setState({
-      content
+      data
     })
   }
   render() { 
@@ -62,14 +99,14 @@ class New extends Component {
     )
     return (  
       <div className='articleArea'>
-        <form>
+        <form onSubmit={this.formVerify}>
           <div className='cell'>标题: </div>
-          <div><input type='text' className='titleInput' placeholder='请在此输入标题'/></div>
+          <div><input onChange={(e) => this.updateTitle(e)} type='text' className='titleInput' placeholder='请在此输入标题'/></div>
           <div className='cell'>内容:</div>
           <div className='cell cm'>
             <CodeMirror
               ref={code=>this.codeMirror = code}
-              value='react-codemirror'
+              value=''
               options={{
                 lineNumbers: true,
                 mode: {name: 'text/javascript'},
@@ -85,11 +122,11 @@ class New extends Component {
             主题: 
             <Dropdown trigger={['click']} overlay={menu}>
               <Button className='nodesButton'>
-                请选择一个节点<DownOutlined />
+                <span ref={span=>this.themeNode = span}>请选择一个节点</span><DownOutlined />
               </Button>
             </Dropdown>
           </div>
-          <div className='cell'><Button onClick={this.publish.bind(this)}>发布文章</Button></div>
+          <div className='cell'><Button htmlType='submit'>发布文章</Button></div>
         </form>
       </div>
     );
@@ -97,7 +134,8 @@ class New extends Component {
 }
 const mapState = state => {
   return {
-    loginState: state.loginState
+    loginState: state.loginState,
+    userInfo: state.userInfo
   }
 }
  

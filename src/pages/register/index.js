@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Input, Form, Button, Checkbox } from 'antd'
 import {Link} from 'react-router-dom'
 import axios from 'axios'
-
+import {BASE_URL} from '../../base'
 import './register.less'
 
 const Layout = {
@@ -25,7 +25,7 @@ const onFinishFailed = errorInfo => {
 
 class Register extends Component {
   async onFinish(values) {
-    await axios.post('http://localhost:3001/api/v2/register', {...values})
+    await axios.post(`${BASE_URL}/api/v2/register`, {...values})
     .then(res=> {
       const data = res.data
       if (data.code === 200) {

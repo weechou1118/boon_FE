@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { Input, Form, Button, notification } from 'antd'
 import axios from 'axios'
+import {BASE_URL} from '../../base'
 import './login.less'
 import { LOGIN_IN, SET_USER_INFO } from '../../store/constants'
 
@@ -21,10 +22,11 @@ const onFinishFailed = errorInfo => {
 
 class Login extends Component {
   async onFinish(values) {
-    await axios.post('http://localhost:3001/api/v2/user/loginVerify', {...values})
+    await axios.post(`${BASE_URL}/api/v2/user/loginVerify`, {...values})
     .then(res=>{
       const data = res.data
       if (data.code === 200) {
+        console.log(data.userInfo)
         const { history } = this.props
         this.props.handleLoginIn(1, data.token)
         this.props.setUserInfo(data.userInfo)

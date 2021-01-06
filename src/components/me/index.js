@@ -44,11 +44,11 @@ class Me extends Component {
             </tbody>
           </table>
         </div>
-        <div className='cell' id='lineWrapper'>
+        {/* <div className='cell' id='lineWrapper'>
           <div className='line'>
             <div></div>
           </div>
-        </div>
+        </div> */}
         <div className='cell'>
           <table>
             <tbody>

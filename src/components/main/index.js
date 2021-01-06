@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux'
+import axios from 'axios'
+import {BASE_URL} from '../../base'
 import './main.less'
 
 
@@ -8,34 +11,36 @@ class Main extends Component {
     this.sortHot = this.sortHot.bind(this)
     this.sortLatest = this.sortLatest.bind(this)
     this.goArticle = this.goArticle.bind(this)
+    this.likehandler = this.likehandler.bind(this)
     this.state = {
-      news: [
-        {
-          id: 15345234,
-          title: '一个美国小码农眼中的硅谷',
-          tag: '程序员',
-          po: 'leshi1122',
-          punish_time: '25分钟前',
-          like_count: 2,
-          comments_count: 4,
-          sortt: 1
-        },
-        {
-          id: 26563452,
-          title: '如果不考虑工资,你最想从事哪种职业',
-          tag: '程序员',
-          po: 'tonnycao',
-          punish_time: '1分钟前',
-          like_count: 9,
-          comments_count: 14,
-          sortt: 2
-        },
-      ]
+      news: [],
+      // templates: [
+      //   {
+      //     id: 15345234,
+      //     title: '一个美国小码农眼中的硅谷',
+      //     tags: '程序员',
+      //     po: 'leshi1122',
+      //     punish_time: '25分钟前',
+      //     like_count: 2,
+      //     comments_count: 4,
+      //     sortt: 1
+      //   },
+      // ],
+      likeStyle: {
+        backgroundColor: '#ffc508b9'
+      }
     }
   }
   componentDidMount() {
     // UI事件
     this.switchActive()
+    axios.get(`${BASE_URL}/api/v2/article`)
+    .then(res => {
+      const data = res.data.data
+      this.setState({
+        news: data
+      })
+    })
   }
   switchActive() {
     this.subTab.querySelectorAll('a').forEach(item => {
@@ -66,8 +71,32 @@ class Main extends Component {
   goArticle(e) {
     this.props.history.push('/article/' + e.target.closest('.item').getAttribute('data-article-id'))
   }
+  likehandler(e, arId) {
+    e.stopPropagation() // 禁止冒泡
+    // 视图层逻辑
+    let likeBtn = e.target.closest('p')
+    let likeState = likeBtn.classList.contains('active')
+    let spanEL = likeBtn.querySelectorAll('span')[0]
+    let count = spanEL.innerHTML
+    if (likeState) {
+      likeBtn.classList.remove('active')
+      spanEL.innerHTML= --count
+    } else {
+      likeBtn.classList.add('active')
+      spanEL.innerHTML= ++count
+    }
+
+    axios.post(`${BASE_URL}/api/v2/like`, {
+      arId,
+      uId: this.props.uId,
+      state: likeState ? 0 : 1
+    })
+    .then(res => {
+      // console.log(res)
+    })
+  }
   render() { 
-    return (  
+    return (
       <div id='Main'>
         <div className='box'>
           <div id='Cell' className='subTab' ref={div => {this.subTab = div}}>
@@ -81,11 +110,11 @@ class Main extends Component {
                   <a href='/'><div className='avatar'></div></a>
                   <div className='itemContent'>
                     <a href={'/article/' + item.id}>{item.title}</a>
-                    <p><i className='node'>{item.tag}</i>&nbsp;·&nbsp;<strong><a href='/'>{item.po}</a></strong>&nbsp;·&nbsp;{item.punish_time}</p>
+                    <p><i className='node'>{item.tags}</i>&nbsp;·&nbsp;<strong><a href='/'>{item.author}</a></strong>&nbsp;·&nbsp;{item.updatedAt}</p>
                   </div>
                   <div className='countsBox'>
-                    <p><i className='iconfont'>&#xe668;</i>{item.like_count}</p>
-                    <p><i className='iconfont'>&#xe884;</i>{item.comments_count}</p>
+                    <p onClick={(e) => this.likehandler(e, item.arId)}><i className='iconfont'>&#xe668;</i><span>{item.niceCount}</span></p>
+                    <p><i className='iconfont'>&#xe884;</i><span>{item.commentsCount}</span></p>
                   </div>
                 </div>
               )
@@ -96,4 +125,10 @@ class Main extends Component {
     );
   }
 }
-export default Main;
+const mapStates = state => {
+  return {
+    uId: state.userInfo.uId
+  }
+}
+
+export default connect(mapStates)(Main);
