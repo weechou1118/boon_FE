@@ -25,6 +25,7 @@ class TagsLine extends Component {
     axios.get(`${BASE_URL}/api/v2/comment/1`)
     .then(res => {
       const data = res.data.data
+      console.log(data)
       const state = this.state
       state.comments = data
       this.setState({

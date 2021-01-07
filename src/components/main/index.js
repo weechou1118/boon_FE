@@ -34,9 +34,12 @@ class Main extends Component {
   componentDidMount() {
     // UI事件
     this.switchActive()
+
+    // 获取所有文章数据
     axios.get(`${BASE_URL}/api/v2/article`)
     .then(res => {
       const data = res.data.data
+      console.log(data)
       this.setState({
         news: data
       })
@@ -110,7 +113,7 @@ class Main extends Component {
                   <a href='/'><div className='avatar'></div></a>
                   <div className='itemContent'>
                     <a href={'/article/' + item.id}>{item.title}</a>
-                    <p><i className='node'>{item.tags}</i>&nbsp;·&nbsp;<strong><a href='/'>{item.author}</a></strong>&nbsp;·&nbsp;{item.updatedAt}</p>
+                    <p><i className='node'>{item.tags}</i>&nbsp;·&nbsp;<strong><a href='/'>{item.author}</a></strong>&nbsp;·&nbsp;{item.howLongAgo}</p>
                   </div>
                   <div className='countsBox'>
                     <p onClick={(e) => this.likehandler(e, item.arId)}><i className='iconfont'>&#xe668;</i><span>{item.niceCount}</span></p>
