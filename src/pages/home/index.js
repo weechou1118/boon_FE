@@ -35,10 +35,10 @@ class Home extends Component {
   render() { 
     return (  
       <Fragment >
-        <div id="Rightbar">
+        <div id="rightBar">
           {
             this.props.loginState === 1?
-            <Me />
+            <Me {...this.props} />
             :
             <UnLoginMe />
           }

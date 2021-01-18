@@ -8,10 +8,9 @@ import './main.less'
 class Main extends Component {
   constructor() {
     super()
-    this.sortHot = this.sortHot.bind(this)
-    this.sortLatest = this.sortLatest.bind(this)
     this.goArticle = this.goArticle.bind(this)
     this.likehandler = this.likehandler.bind(this)
+    this.getAllArticle = this.getAllArticle.bind(this)
     this.state = {
       news: [],
       // templates: [
@@ -36,10 +35,21 @@ class Main extends Component {
     this.switchActive()
 
     // 获取所有文章数据
-    axios.get(`${BASE_URL}/api/v2/article`)
+    this.getAllArticle()
+  }
+  getAllArticle(con) {
+    let url = `${BASE_URL}/api/v2/article`
+    switch (con) {
+      case 1:
+        url += '/latest'
+        break;
+    
+      default:
+        break;
+    }
+    axios.get(url)
     .then(res => {
       const data = res.data.data
-      console.log(data)
       this.setState({
         news: data
       })
@@ -54,21 +64,6 @@ class Main extends Component {
         }
         e.target.classList.add('active')
       }
-    })
-  }
-  // 模拟数据查询查询
-  sortHot() {
-    const news = this.state.news
-    news.sort((a,b) => a.sortt - b.sortt)
-    this.setState({
-      news
-    })
-  }
-  sortLatest() {
-    const news = this.state.news
-    news.sort((a,b) => b.sortt - a.sortt)
-    this.setState({
-      news
     })
   }
   goArticle(e) {
@@ -103,8 +98,8 @@ class Main extends Component {
       <div id='Main'>
         <div className='box'>
           <div id='Cell' className='subTab' ref={div => {this.subTab = div}}>
-            <a href='/' className='active' onClick={this.sortHot}>热门</a>
-            <a href='/' onClick={this.sortLatest}>最新</a>
+            <a href='/' onClick={() => this.getAllArticle(0)} className='active'>热门</a>
+            <a href='/' onClick={() => this.getAllArticle(1)}>最新</a>
           </div>
           {
             this.state.news.map((item, index)=> {

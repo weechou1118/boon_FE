@@ -82,7 +82,7 @@ class Login extends Component {
                 name="password"
                 rules={[{ required: true, message: '请输入您的密码!' }]}
               >
-                <Input.Password />
+                <Input.Password autoComplete="current-password" />
               </Form.Item>
               <Button type="primary" htmlType="submit" style={{...buttonStyle}}>
                 登录

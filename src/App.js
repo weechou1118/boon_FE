@@ -14,6 +14,7 @@ import Activate from './pages/register/activate'
 import Success from './pages/register/success'
 import Article from './pages/article'
 import New from './pages/new'
+import SettingMe from './pages/settingMe'
 import NotFound from './pages/404'
 
 import './wrapper.less'
@@ -38,6 +39,7 @@ function App(props) {
                   <Route exact path='/register/success' component={Success}></Route>
                   <Route exact path='/article/:id' component={Article}></Route>
                   <Route exact path='/new' component={New}></Route>
+                  <Route path='/settingMe' component={SettingMe}></Route>
                   <Route component={NotFound}></Route>
                 </Switch>
               </div>

@@ -1,4 +1,4 @@
-const getCaretCoordinates = require('textarea-caret')
+// const getCaretCoordinates = require('textarea-caret')
 
 // 获取光标位置
 function getSelectionCoords(win) {
@@ -7,7 +7,7 @@ function getSelectionCoords(win) {
   var sel = doc.selection, range, rects, rect;
   var x = 0, y = 0;
   if (sel) {
-      if (sel.type != "Control") {
+      if (sel.type !== "Control") {
           range = sel.createRange();
           range.collapse(true);
           x = range.boundingLeft;
@@ -30,7 +30,7 @@ function getSelectionCoords(win) {
               }
           }
           // Fall back to inserting a temporary element
-          if ((x == 0 && y == 0) || rect === undefined) {
+          if ((x === 0 && y === 0) || rect === undefined) {
               var span = doc.createElement("span");
               if (span.getClientRects) {
                   // Ensure span has dimensions and position by
@@ -67,7 +67,6 @@ function insertText(obj,str) {
   } else {
       obj.value += str;
   }
-  console.log(obj)
 }
 function moveEnd(obj){
   obj.focus();

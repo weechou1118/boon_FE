@@ -190,6 +190,7 @@ nav {
   transition: all .5s;
   background-color: #fff;
   width: 100%;
+  z-index: 1;
 
   #Tab {
     max-width: 1060px;
@@ -217,5 +218,14 @@ nav {
         color: #ffc408;
       }
     }
+  }
+}
+
+// 修改antd dropdown的定位 以防在小分辨率下触发header变长的bug
+.ant-dropdown-menu {
+  position: absolute!important;
+  left: -25px!important;
+  &::before {
+    content: '';
   }
 }

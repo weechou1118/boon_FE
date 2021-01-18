@@ -22,10 +22,9 @@ class TagsLine extends Component {
   }
   componentDidMount() {
     console.log(this.props)
-    axios.get(`${BASE_URL}/api/v2/comment/1`)
+    axios.get(`${BASE_URL}/api/v2/comment/${this.props.match.params.id}`)
     .then(res => {
       const data = res.data.data
-      console.log(data)
       const state = this.state
       state.comments = data
       this.setState({
@@ -37,7 +36,12 @@ class TagsLine extends Component {
     return (
       <div className='box comments_table'>
         <div className='cell' style={{'borderTop': 'none','paddingTop': '0'}}>
-          <span className='gray'>{this.state.comments.length}条回复&nbsp;·&nbsp;{this.state.replyTimeLast}</span>
+          {
+            this.state.comments.length>0?
+            <span className='gray'>{this.state.comments.length}条回复&nbsp;·&nbsp;{this.state.replyTimeLast}</span>
+            :
+            <span className='empty'>这篇文章还没有人评论噢~</span>
+          }
         </div>
         {
           this.state.comments.map((item, index) => {

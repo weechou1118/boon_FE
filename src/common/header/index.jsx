@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Link, withRouter, NavLink } from 'react-router-dom'
 import { LOGIN_OUT } from '../../store/constants'
 import {Menu, Dropdown} from 'antd'
-import {DownOutlined, UnorderedListOutlined } from '@ant-design/icons'
+import { UnorderedListOutlined } from '@ant-design/icons'
 
 import './header.less'
 
@@ -90,7 +90,7 @@ class Header extends Component {
                 <Link to='/'>首页</Link>
                 {
                   this.props.loginState === 1?
-                  <NavLink to='/new'>开始创作<DownOutlined /></NavLink>
+                  <NavLink to='/new'>开始创作！</NavLink>
                   :
                   null
                 }
@@ -110,7 +110,12 @@ class Header extends Component {
                 }
                 {
                   this.props.loginState ===1 ?
-                  <Link to='/loginout' onClick={this.loginout.bind(this)}>登出</Link>
+                  (
+                    <>
+                      <Link to='/settingMe'>设定</Link>
+                      <Link to='/loginout' onClick={this.loginout.bind(this)}>登出</Link>
+                    </>
+                  )
                   :
                   <Link to='/login'>登录</Link>
                 }

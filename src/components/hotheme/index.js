@@ -15,7 +15,7 @@ class Hotheme extends Component {
                 <tbody>
                   <tr>
                     <td>
-                      <img width='40' height='40' alt='' src='https://sf1-ttcdn-tos.pstatp.com/img/user-avatar/88e69d0dd5a40383131383ea28fead93~120x256.image' />
+                      <img width='40' height='40' alt='' src='https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2857291761,603812366&fm=26&gp=0.jpg' />
                     </td>
                     <td width='10'></td>
                     <td>

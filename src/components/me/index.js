@@ -3,15 +3,33 @@ import { connect } from 'react-redux'
 import './me.less'
 
 class Me extends Component {
+  componentDidMount() {
+    this.handlerMeCreate()
+  }
+  // 给创作新主题绑定点击事件
+  handlerMeCreate() {
+    let p = this.props
+    document.querySelector('#me_create').addEventListener('click', function(e) {
+      p.history.push('/new')
+    })
+  }
   render() { 
     return (  
-      <div className='box'>
+      <div className='box' id='me_compo'>
         <div className='cell'>
           <table className='me'>
             <tbody>
               <tr>
                 <td width='48'>
-                  <div className='avatar'></div>
+                  <div className='avatar'>
+                    {
+                      this.props.loginState === 1?
+                      (
+                        <img alt='avatar' src={this.props.avatarUrl} />
+                      ):
+                      null
+                    }
+                  </div>
                 </td>
                 <td width='10'></td>
                 <td>
@@ -49,7 +67,7 @@ class Me extends Component {
             <div></div>
           </div>
         </div> */}
-        <div className='cell'>
+        <div className='cell' id='me_create'>
           <table>
             <tbody>
               <tr>
@@ -79,6 +97,8 @@ class Me extends Component {
 
 const mapStates = state => {
   return {
+    avatarUrl: state.avatarUrl,
+    loginState: state.loginState,
     userInfo: state.userInfo
   }
 }

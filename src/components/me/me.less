@@ -1,9 +1,12 @@
-.box {
+.box#me_compo {
   background-color: #fff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, .1);
   width: 100%;
   border-radius: 2px;
   display: block;
+  .cell#me_create {
+    cursor: pointer;
+  }
   .cell {
     padding: 10px;
     &:nth-of-type(1) {
@@ -38,8 +41,12 @@
             .avatar {
               width: 48px;
               height: 48px;
-              background-color: lightgreen;
+              // background-color: lightgreen;
               border-radius: 2px;
+              img {
+                width: 48px;
+                border-radius: 10px;
+              }
             }
             p {
               margin: 0;
