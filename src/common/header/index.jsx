@@ -126,7 +126,7 @@ class Header extends Component {
               <div className='avatar' onClick={this.showVerticalMenu.bind(this)}>
                 <img alt='' src={this.props.avatarUrl} />
                 <div className='verticalMenu hidden' ref={menu =>this.verticalMenuRef=menu}>
-                  <p><NavLink to='/'>个人主页</NavLink></p>
+                  <p><NavLink to='/settingMe'>个人主页</NavLink></p>
                   <p><NavLink to='/new'>写文章</NavLink></p>
                   <p><Link to='/loginout' onClick={this.loginout.bind(this)}>登出</Link></p>
                 </div>
