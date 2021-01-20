@@ -38,6 +38,9 @@ export default (state = defaultState, action) => {
       ns.userInfo.level = action.level
       ns.loginState = 1
       return ns
+    case constants.SET_AVATAR:
+      ns.avatarUrl = action.avatarUrl
+      return ns
     default:
       return state
   }
