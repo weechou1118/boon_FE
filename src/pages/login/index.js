@@ -5,7 +5,7 @@ import { Input, Form, Button, notification } from 'antd'
 import axios from 'axios'
 import {BASE_URL} from '../../base'
 import './login.less'
-import { LOGIN_IN, SET_USER_INFO } from '../../store/constants'
+import { LOGIN_IN, SET_USER_INFO, SET_AVATAR } from '../../store/constants'
 
 const layout = {
   labelCol: { span: 8 },
@@ -26,10 +26,10 @@ class Login extends Component {
     .then(res=>{
       const data = res.data
       if (data.code === 200) {
-        console.log(data.userInfo)
         const { history } = this.props
         this.props.handleLoginIn(1, data.token)
         this.props.setUserInfo(data.userInfo)
+        this.props.setAvatar(data.avatarUrl)
         history.push('/')
       } else {
         alert(data.msg)
@@ -115,6 +115,9 @@ const mapDispatchs = dispatch => {
     },
     setUserInfo(userInfo) {
       dispatch({type: SET_USER_INFO, userInfo})
+    },
+    setAvatar(avatarUrl) {
+      dispatch({type: SET_AVATAR, avatarUrl})
     }
   }
 }

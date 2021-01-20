@@ -105,7 +105,9 @@ class Main extends Component {
             this.state.news.map((item, index)=> {
               return (
                 <div data-article-id={item.id} onClick={(e) => this.goArticle(e)} ref={div => this.vLink=div} to='/login' className='cell item' key={index}>
-                  <a href='/'><div className='avatar'></div></a>
+                  <a href='/'>
+                    <img width='48' height='48' className='avatar' alt='' src={item.avatar}/>
+                  </a>
                   <div className='itemContent'>
                     <a href={'/article/' + item.id}>{item.title}</a>
                     <p><i className='node'>{item.tags}</i>&nbsp;·&nbsp;<strong><a href='/'>{item.author}</a></strong>&nbsp;·&nbsp;{item.howLongAgo}</p>

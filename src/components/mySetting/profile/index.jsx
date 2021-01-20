@@ -3,9 +3,6 @@ import {connect} from 'react-redux'
 import './profile.less'
 
 class Profile extends Component {
-  componentDidMount() {
-    console.log(this.props)
-  }
   render() { 
     return (
       <form id='profile'>

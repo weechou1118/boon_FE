@@ -34,7 +34,6 @@ class New extends Component {
     data.author = this.props.userInfo.nickname
     data.uId = this.props.userInfo.uId
     data.id = this.props.userInfo.id
-    console.log(data.uId)
     this.setState({
       data
     })
