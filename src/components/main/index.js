@@ -23,19 +23,30 @@ class Main extends Component {
     this.switchActive()
 
     // 获取所有文章数据
-    this.getAllArticle()
+    this.getAllArticle(0,2)
   }
-  getAllArticle(con) {
+  /**
+   * 
+   * @param {*} pageNum 页码(第一页为0)
+   * @param {1 or 2} con 1: 最新; 2:最热
+   */
+  getAllArticle(pageNum,con) {
     let url = `${BASE_URL}/api/v2/article`
     switch (con) {
       case 1:
         url += '/latest'
         break;
-    
+      case 2:
+        url += '/hotest'
+        break;
       default:
         break;
     }
-    axios.get(url)
+    axios.get(url, {
+      params: {
+        pageNum
+      }
+    })
     .then(res => {
       const data = res.data.data
       this.setState({
@@ -87,8 +98,8 @@ class Main extends Component {
       <div id='Main'>
         <div className='box'>
           <div id='Cell' className='subTab' ref={div => {this.subTab = div}}>
-            <a href='/' onClick={() => this.getAllArticle(0)} className='active'>热门</a>
-            <a href='/' onClick={() => this.getAllArticle(1)}>最新</a>
+            <a href='/' onClick={() => this.getAllArticle(0,2)} className='active'>热门</a>
+            <a href='/' onClick={() => this.getAllArticle(0,1)}>最新</a>
           </div>
           {
             this.state.news.map((item, index)=> {

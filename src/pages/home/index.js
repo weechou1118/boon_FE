@@ -45,8 +45,8 @@ class Home extends Component {
           {
             this.props.loginState === 1?
             <Fragment>
-              <div class='sep20'></div>
-              <div className='inner'>
+              <div className='sep20'></div>
+              <div className='inner reward'>
                 <i className='iconfont'>&#xe63c;</i>
                 &nbsp;领取今日的登录奖励
               </div>
