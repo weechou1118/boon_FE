@@ -4,6 +4,7 @@ import './profile.less'
 
 class Profile extends Component {
   render() { 
+    const red = {'color':'red'}
     return (
       <form id='profile'>
         <table>
@@ -14,7 +15,7 @@ class Profile extends Component {
             </tr>
             <tr>
               <td>手机号:</td>
-              <td><span style={{'color': 'red'}}>未验证手机号</span></td>
+              <td><span style={red}>未验证手机号</span></td>
             </tr>
             <tr>
               <td>电子邮箱:</td>

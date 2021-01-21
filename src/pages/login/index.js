@@ -84,7 +84,7 @@ class Login extends Component {
               >
                 <Input.Password autoComplete="current-password" />
               </Form.Item>
-              <Button type="primary" htmlType="submit" style={{...buttonStyle}}>
+              <Button type="primary" htmlType="submit" style={buttonStyle}>
                 登录
               </Button>
               

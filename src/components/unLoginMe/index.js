@@ -4,6 +4,7 @@ import './unLoginMe.less'
 
 class UnLoginMe extends Component {
   render() { 
+    const white = {'color': '#000'}
     return (  
       <div className='default box'>
         <div className='cell'>
@@ -12,7 +13,7 @@ class UnLoginMe extends Component {
         <div>
           <a className='registerBtn' href='/register'>现在注册</a>
           <br />
-          <p style={{'color': '#000'}}>已注册用户请<Link to='/login'>登录</Link></p>
+          <p style={white}>已注册用户请<Link to='/login'>登录</Link></p>
         </div>
       </div>
     );

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom'
 import {connect} from 'react-redux'
 import MainDetail from '../../components/mainDetail'
 import CommentTable from '../../components/commentTable'

@@ -9,8 +9,6 @@ import Me from '../../components/me'
 import Main from '../../components/main'
 import Hotheme from '../../components/hotheme'
 import UnLoginMe from '../../components/unLoginMe'
-// import Hotnode from '../../common/hotnode'
-// import Community from '../../common/community/'
 
 import './home.less'
 
@@ -33,6 +31,7 @@ class Home extends Component {
     })
   }
   render() { 
+    const styles = {'height': '1px','margin': '20px 0','boxShadow': '0 0 3px rgba(0, 0, 0, .2)'}
     return (  
       <Fragment >
         <div id="rightBar">
@@ -46,12 +45,12 @@ class Home extends Component {
           {
             this.props.loginState === 1?
             <Fragment>
-              <div style={{'height': '20px'}}></div>
+              <div class='sep20'></div>
               <div className='inner'>
                 <i className='iconfont'>&#xe63c;</i>
                 &nbsp;领取今日的登录奖励
               </div>
-              <div style={{'height': '1px','margin': '20px 0','boxShadow': '0 0 3px rgba(0, 0, 0, .2)'}}></div>
+              <div style={styles}></div>
               <div className='inner'>
                 <span>我收藏的节点</span>
               </div>

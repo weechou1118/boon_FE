@@ -33,9 +33,10 @@ class TagsLine extends Component {
     })
   }
   render() {
+    const styles = {'borderTop': 'none','paddingTop': '0'}
     return (
       <div className='box comments_table'>
-        <div className='cell' style={{'borderTop': 'none','paddingTop': '0'}}>
+        <div className='cell' style={styles}>
           {
             this.state.comments.length>0?
             <span className='gray'>{this.state.comments.length}条回复&nbsp;·&nbsp;{this.state.replyTimeLast}</span>

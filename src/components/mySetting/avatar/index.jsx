@@ -58,6 +58,7 @@ class Avatar extends Component {
     })
   }
   render() { 
+    const gray = {'color': '#999999'}
     return ( 
       <form method='POST' onSubmit={(e)=>this.formVerify(e)} id='avatarForm'>
         <table>
@@ -72,7 +73,7 @@ class Avatar extends Component {
           </tr>
           <tr>
             <td></td>
-            <td style={{'color': '#999999'}}>仅支持 2MB 以内的 PNG / JPG / GIF 图片文件</td>
+            <td style={gray}>仅支持 2MB 以内的 PNG / JPG / GIF 图片文件</td>
           </tr>
           <tr>
             <td></td>

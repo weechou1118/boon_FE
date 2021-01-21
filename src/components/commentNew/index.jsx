@@ -101,6 +101,7 @@ class CommentNew extends Component {
     })
   }
   render() { 
+    const styles = {'display': 'none'}
     return (  
       <div className='box'>
         <ul className='userListWhenAt'>
@@ -115,8 +116,8 @@ class CommentNew extends Component {
         <div className='cell'>添加新回复</div>
         <div className='cell'>
           <form id='replyBox' onSubmit={(e) => this.verifyForm(e)}>
-            <input readOnly type="text" name='from_uid' value={this.props.uId} style={{'display': 'none'}}/>
-            <input readOnly type="text" name='arId' value={this.props.match.params.id} style={{'display': 'none'}}/>
+            <input readOnly type="text" name='from_uid' value={this.props.uId} style={styles}/>
+            <input readOnly type="text" name='arId' value={this.props.match.params.id} style={styles}/>
             <textarea autoComplete='false' name="content" id="replyArea" cols="30" rows="10"></textarea>
             <Button htmlType='submit' className='submitBtn'>回复</Button>
           </form>

@@ -40,6 +40,7 @@ class Register extends Component {
     })
   }
   render() {
+    const textCenter = {'textAlign': 'center'}
     return (  
       <div className='registerWrapper'>
         <div className='register'>
@@ -48,7 +49,7 @@ class Register extends Component {
             <i>›</i>
             <span>注册</span>
           </div>
-          <div className='content' style={{'textAlign': 'center'}}>
+          <div className='content' style={textCenter}>
             <Form
               {...Layout}
               name="basic"
@@ -86,7 +87,7 @@ class Register extends Component {
               >
                 <Checkbox>我已阅读《相关条约》并同意</Checkbox>
               </Form.Item>
-              <Button type="primary" htmlType="submit" style={{...buttonStyle}}>
+              <Button type="primary" htmlType="submit" style={buttonStyle}>
                 注册
               </Button>
             </Form>

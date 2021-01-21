@@ -14,6 +14,8 @@ class Me extends Component {
     })
   }
   render() { 
+    const color = {color: '#778087'}
+    const createNewStyles = {paddingLeft: '10px', color: '#778087'}
     return (  
       <div className='box' id='me_compo'>
         <div className='cell'>
@@ -42,7 +44,7 @@ class Me extends Component {
               </tr>
             </tbody>
           </table>
-          <div style={{height: '10px'}}></div>
+          <div className='sep10'></div>
           <table>
             <tbody>
               <tr>
@@ -74,7 +76,7 @@ class Me extends Component {
                 <td>
                   <img alt='' width='28' height='28' src='https://www.v2ex.com/static/img/essentials/compose.png?v=b9e1f045f4ad639733bf9f6dbc62ed4c'></img>
                 </td>
-                <td style={{paddingLeft: '10px', color: '#778087'}}>
+                <td style={createNewStyles}>
                   <span>创作新主题</span>
                 </td>
               </tr>
@@ -82,7 +84,7 @@ class Me extends Component {
           </table>
         </div>
         <div className='cell'>
-          <span style={{color: '#778087'}}>0&nbsp;条未读提醒</span>
+          <span style={color}>0&nbsp;条未读提醒</span>
           <div className='money'>
             20&nbsp;
             <img alt='' width='16' height='16' src='https://www.v2ex.com/static/img/silver@2x.png' />

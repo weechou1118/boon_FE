@@ -81,7 +81,7 @@ class Header extends Component {
                 this.props.loginState === 1?
                 null:
                 <Dropdown overlay={menu} trigger={['click']}>
-                  <UnorderedListOutlined id='ScreenSmallSizeList' style={{...styles}}/>
+                  <UnorderedListOutlined id='ScreenSmallSizeList' style={styles}/>
                 </Dropdown>
               }
             </div>

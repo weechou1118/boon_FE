@@ -13,18 +13,6 @@ class Main extends Component {
     this.getAllArticle = this.getAllArticle.bind(this)
     this.state = {
       news: [],
-      // templates: [
-      //   {
-      //     id: 15345234,
-      //     title: '一个美国小码农眼中的硅谷',
-      //     tags: '程序员',
-      //     po: 'leshi1122',
-      //     punish_time: '25分钟前',
-      //     like_count: 2,
-      //     comments_count: 4,
-      //     sortt: 1
-      //   },
-      // ],
       likeStyle: {
         backgroundColor: '#ffc508b9'
       }
@@ -70,7 +58,8 @@ class Main extends Component {
     this.props.history.push('/article/' + e.target.closest('.item').getAttribute('data-article-id'))
   }
   likehandler(e, arId) {
-    e.stopPropagation() // 禁止冒泡
+    // 禁止冒泡
+    e.stopPropagation() 
     // 视图层逻辑
     let likeBtn = e.target.closest('p')
     let likeState = likeBtn.classList.contains('active')
