@@ -16,13 +16,14 @@ const buttonStyle = {
   width: '50%'
 }
 
-const onFinishFailed = errorInfo => {
-  console.log('Failed:', errorInfo);
-};
-
 class Login extends Component {
-  async onFinish(values) {
-    await axios.post(`${BASE_URL}/api/v2/user/loginVerify`, {...values})
+  // 表单提交失败回调
+  onFinishFailed(error) {
+    console.log('Failed:', error);
+  }
+  // 表单提交成功回调
+  onFinish(values) {
+    axios.post(`${BASE_URL}/api/v2/user/loginVerify`, {...values})
     .then(res=>{
       const data = res.data
       if (data.code === 200) {
@@ -33,9 +34,10 @@ class Login extends Component {
         history.push('/')
       } else {
         alert(data.msg)
+        return false
       }
     })
-    console.log('Success:', values);
+    console.log(values);
   }
   componentDidMount() {
     const flag = this.props.location.search.split('=').pop()
@@ -65,7 +67,7 @@ class Login extends Component {
               initialValues={{ remember: true }}
               autoComplete='off'
               onFinish={this.onFinish.bind(this)}
-              onFinishFailed={onFinishFailed}
+              onFinishFailed={this.onFinishFailed.bind(this)}
             >
               <Form.Item
                 label="用户名/邮箱"

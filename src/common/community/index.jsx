@@ -6,7 +6,6 @@ class Community extends Component {
   componentDidMount() {
     axios.get('https://www.v2ex.com/feed/tab/tech.xml')
     .then(res=> {
-      console.log(res)
     })
   }
   render() { 

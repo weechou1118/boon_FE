@@ -63,9 +63,7 @@
         padding-left: 10px;
         color: #ccc;
 
-        a:visited,
-        a:active,
-        a:link {
+        a {
           color: #778087;
         }
 
@@ -97,8 +95,15 @@
           color: #fff;
           width: 100%;
           padding: 0 4px;
+          position: relative;
 
-          &:hover,
+          @media (any-hover: hover) {
+            &:hover {
+              cursor: pointer;
+              background-color: #ffc508b9;
+            }
+          }
+
           &.active {
             cursor: pointer;
             background-color: #ffc508b9;
@@ -116,27 +121,29 @@
           i {
             padding: 0 3px;
           }
+
+          &.nicenice::before {
+            content: 'o(￣▽￣)b';
+            position: absolute;
+            right: 20px;
+            top: 0;
+            white-space: nowrap;
+            color: #000;
+            user-select: none;
+            opacity: 0;
+            animation: niceAnime .5s;
+          }
         }
       }
-
-      // .commentCount {
-      //   width: 70px;
-      //   text-align: right;
-
-      //   .count_livid {
-      //     font-weight: 700;
-      //     padding: 2px 10px;
-      //     background-color: #FAD689;
-      //     color: #fff;
-      //     border-radius: 12px;
-      //     line-height: 12px;
-      //     display: inline-block;
-      //   }
-
-      //   .count_livid:hover {
-      //     background-color: #ffc408;
-      //   }
-      // }
     }
+  }
+}
+
+@keyframes niceAnime {
+  from {}
+
+  to {
+    top: -20px;
+    opacity: 1;
   }
 }

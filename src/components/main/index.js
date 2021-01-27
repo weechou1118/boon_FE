@@ -4,7 +4,6 @@ import axios from 'axios'
 import {BASE_URL} from '../../base'
 import './main.less'
 
-
 class Main extends Component {
   constructor() {
     super()
@@ -71,26 +70,38 @@ class Main extends Component {
   likehandler(e, arId) {
     // 禁止冒泡
     e.stopPropagation() 
+    if(this.props.loginState === 0) {
+      alert('请先登录')
+      this.props.history.push('/login')
+      return false
+    }
     // 视图层逻辑
     let likeBtn = e.target.closest('p')
     let likeState = likeBtn.classList.contains('active')
     let spanEL = likeBtn.querySelectorAll('span')[0]
     let count = spanEL.innerHTML
+
     if (likeState) {
+      // 在ios safari中不兼容
       likeBtn.classList.remove('active')
       spanEL.innerHTML= --count
     } else {
+      // 小动画
+      likeBtn.classList.add('nicenice')
+      setTimeout(() => {
+        likeBtn.classList.toggle('nicenice')
+      }, 500);
+
       likeBtn.classList.add('active')
       spanEL.innerHTML= ++count
     }
 
     axios.post(`${BASE_URL}/api/v2/like`, {
       arId,
-      uId: this.props.uId,
+      uId: this.props.userInfo.id,
       state: likeState ? 0 : 1
     })
     .then(res => {
-      // console.log(res)
     })
   }
   render() { 
@@ -113,7 +124,7 @@ class Main extends Component {
                     <p><i className='node'>{item.tags}</i>&nbsp;·&nbsp;<strong><a href='/'>{item.author}</a></strong>&nbsp;·&nbsp;{item.howLongAgo}</p>
                   </div>
                   <div className='countsBox'>
-                    <p onClick={(e) => this.likehandler(e, item.arId)}><i className='iconfont'>&#xe668;</i><span>{item.niceCount}</span></p>
+                    <p className={this.props.loginState===1&&item.Love.includes(this.props.userInfo.id)?'active':''} onClick={(e) => this.likehandler(e, item.id)}><i className='iconfont'>&#xe668;</i><span>{item.niceCount}</span></p>
                     <p><i className='iconfont'>&#xe884;</i><span>{item.commentsCount}</span></p>
                   </div>
                 </div>
@@ -127,7 +138,8 @@ class Main extends Component {
 }
 const mapStates = state => {
   return {
-    uId: state.userInfo.uId
+    loginState: state.loginState,
+    userInfo: state.userInfo
   }
 }
 
