@@ -20,7 +20,6 @@ const buttonStyle = {
 }
 
 const onFinishFailed = errorInfo => {
-  // console.log('Failed:', errorInfo);
 };
 
 class Register extends Component {

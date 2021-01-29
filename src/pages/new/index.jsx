@@ -46,8 +46,6 @@ class New extends Component {
       const data = res.data
       if(data.code !== 400) {
         alert('文章发布成功!')
-        console.log(data)
-        // this.props.history.push('/')
       }
     })
   }
@@ -112,7 +110,8 @@ class New extends Component {
                 autofocus: true,
                 styleActiveLine: true,
                 extraKeys: {'Ctrl': 'autocomplete'},
-                smartIndent: true
+                smartIndent: true,
+                lineWrapping: true
               }}
               onChange={(editor, data, content) =>this.updateWordCount(editor, data, content)}
             ></CodeMirror>

@@ -14,7 +14,6 @@ class Avatar extends Component {
     this.formVerify = this.formVerify.bind(this)
   }
   componentDidMount() {
-    console.log(this.props.userInfo)
   }
   formVerify(e) {
     e.preventDefault()
@@ -51,7 +50,6 @@ class Avatar extends Component {
     })
     .then(res => {
       const data = res.data
-      console.log(data)
       if (data) {
         this.props.setAvatar(data.avatarUrl)
       }

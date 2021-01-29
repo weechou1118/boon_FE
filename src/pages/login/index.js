@@ -37,7 +37,6 @@ class Login extends Component {
         return false
       }
     })
-    console.log(values);
   }
   componentDidMount() {
     const flag = this.props.location.search.split('=').pop()

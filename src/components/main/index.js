@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Pagination } from 'antd'
 import {connect} from 'react-redux'
 import axios from 'axios'
 import {BASE_URL} from '../../base'
@@ -10,8 +11,11 @@ class Main extends Component {
     this.goArticle = this.goArticle.bind(this)
     this.likehandler = this.likehandler.bind(this)
     this.getAllArticle = this.getAllArticle.bind(this)
+    this.reArticle = this.reArticle.bind(this)
     this.state = {
       news: [],
+      nowType: null,
+      total: null,
       likeStyle: {
         backgroundColor: '#ffc508b9'
       }
@@ -22,7 +26,7 @@ class Main extends Component {
     this.switchActive()
 
     // 获取所有文章数据
-    this.getAllArticle(0,2)
+    this.getAllArticle(1,2)
   }
   /**
    * 
@@ -30,6 +34,9 @@ class Main extends Component {
    * @param {1 or 2} con 1: 最新; 2:最热
    */
   getAllArticle(pageNum,con) {
+    const _ = this.state
+    _.nowType = con
+    this.setState({..._})
     let url = `${BASE_URL}/api/v2/article`
     switch (con) {
       case 1:
@@ -49,7 +56,8 @@ class Main extends Component {
     .then(res => {
       const data = res.data.data
       this.setState({
-        news: data
+        news: data,
+        total: res.data.total
       })
     })
   }
@@ -104,13 +112,26 @@ class Main extends Component {
     .then(res => {
     })
   }
+  // 重写antd导航样式
+  itemRender(current, type, originalElement) {
+    if (type === 'prev') {
+      return <a>❮</a>;
+    }
+    if (type === 'next') {
+      return <a>❯</a>;
+    }
+    return originalElement;
+  }
+  reArticle() {
+    this.getAllArticle(arguments[0], this.state.nowType)
+  }
   render() { 
     return (
       <div id='Main'>
         <div className='box'>
           <div id='Cell' className='subTab' ref={div => {this.subTab = div}}>
-            <a href='/' onClick={() => this.getAllArticle(0,2)} className='active'>热门</a>
-            <a href='/' onClick={() => this.getAllArticle(0,1)}>最新</a>
+            <a href='/' onClick={() => this.getAllArticle(1,2)} className='active'>热门</a>
+            <a href='/' onClick={() => this.getAllArticle(1,1)}>最新</a>
           </div>
           {
             this.state.news.map((item, index)=> {
@@ -130,6 +151,9 @@ class Main extends Component {
                 </div>
               )
             })
+          }
+          {
+            this.state.total?<Pagination onChange={this.reArticle} itemRender={this.itemRender.bind(this)} className='myPagination' size='small' total={this.state.total}/>:null
           }
         </div>
       </div>
