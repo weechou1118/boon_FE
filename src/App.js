@@ -1,4 +1,13 @@
-import React, { lazy, Suspense } from 'react';
+/*
+ * @Description: 
+ * @Version: 1.0
+ * @Autor: zhou wei
+ * @Date: 2020-09-24 11:14:16
+ * @LastEditors: zhou wei
+ * @LastEditTime: 2021-02-02 10:12:51
+ */
+
+import React, { Suspense } from 'react';
 import Header from './common/header'
 import Footer from './common/footer'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -16,17 +25,20 @@ import Article from './pages/article'
 import New from './pages/new'
 import SettingMe from './pages/settingMe'
 import NotFound from './pages/404'
+import Notifications from './pages/noti'
+import Login from './pages/login'
+import Chat from './pages/chat'
 
 import './wrapper.less'
 
-const Login = lazy(() => import(/* webpackChunkName: "login" */'./pages/login'))
+// const Login = lazy(() => import(/* webpackChunkName: "login" */'./pages/login'))
 
 function App(props) {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         <Router>
-          <Suspense fallback={<div>loading...</div>}>
+          <Suspense fallback={<div></div>}>
             <Header />
             <div id='Wrapper' className={props.history}>
               <div className='content'>
@@ -39,7 +51,9 @@ function App(props) {
                   <Route exact path='/register/success' component={Success}></Route>
                   <Route exact path='/article/:id' component={Article}></Route>
                   <Route exact path='/new' component={New}></Route>
+                  <Route exact path='/chat' component={Chat}></Route>
                   <Route path='/settingMe' component={SettingMe}></Route>
+                  <Route path='/notifications' component={Notifications}></Route>
                   <Route component={NotFound}></Route>
                 </Switch>
               </div>

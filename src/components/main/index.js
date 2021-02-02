@@ -115,10 +115,10 @@ class Main extends Component {
   // 重写antd导航样式
   itemRender(current, type, originalElement) {
     if (type === 'prev') {
-      return <a>❮</a>;
+      return <a onClick={(e) => e.preventDefault()} href='/'>❮</a>;
     }
     if (type === 'next') {
-      return <a>❯</a>;
+      return <a onClick={(e) => e.preventDefault()} href='/'>❯</a>;
     }
     return originalElement;
   }

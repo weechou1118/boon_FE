@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import { TRUN_ZERO } from '../../store/constants'
 import './me.less'
 
 class Me extends Component {
+  constructor() {
+    super()
+    this.onTrueZero = this.onTrueZero.bind(this)
+  }
   componentDidMount() {
     this.handlerMeCreate()
   }
@@ -13,8 +19,10 @@ class Me extends Component {
       p.history.push('/new')
     })
   }
+  onTrueZero() {
+    this.props.turnZero()
+  }
   render() { 
-    const color = {color: '#778087'}
     const createNewStyles = {paddingLeft: '10px', color: '#778087'}
     return (  
       <div className='box' id='me_compo'>
@@ -84,13 +92,21 @@ class Me extends Component {
           </table>
         </div>
         <div className='cell'>
-          <span style={color}>0&nbsp;条未读提醒</span>
-          <div className='money'>
+          <Link onClick={this.onTrueZero} className='notification' to='/notifications'>
+            {this.props.newNofiCount}&nbsp;条未读提醒
+            {
+              this.props.newNofiCount > 0?
+              <div className='new'>有新消息!</div>
+              :
+              null
+            }
+          </Link>
+          {/* <div className='money'>
             20&nbsp;
             <img alt='' width='16' height='16' src='https://www.v2ex.com/static/img/silver@2x.png' />
             11&nbsp;
             <img alt='' width='16' height='16' src='https://www.v2ex.com/static/img/bronze@2x.png' />
-          </div>
+          </div> */}
         </div>
       </div>
     );
@@ -101,8 +117,17 @@ const mapStates = state => {
   return {
     avatarUrl: state.avatarUrl,
     loginState: state.loginState,
-    userInfo: state.userInfo
+    userInfo: state.userInfo,
+    newNofiCount: state.newNofiCount
+  }
+}
+
+const mapDispatch = dispatch => {
+  return {
+    turnZero: () => {
+      dispatch({type: TRUN_ZERO})
+    }
   }
 }
  
-export default connect(mapStates, )(Me);
+export default connect(mapStates, mapDispatch)(Me);

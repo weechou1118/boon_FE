@@ -35,19 +35,6 @@ class Header extends Component {
     
   }
   render() {
-    // const menu = (
-    //   <Menu>
-    //     {
-    //       this.state.dropdown.map((item, index) => {
-    //         return (
-    //           <Menu.Item key={index}>
-    //             {item}
-    //           </Menu.Item>
-    //         )
-    //       })
-    //     }
-    //   </Menu>
-    // )
     const menu = (
       <Menu>
         <Menu.Item key="1">
@@ -113,6 +100,7 @@ class Header extends Component {
                   (
                     <>
                       <Link to='/settingMe'>设定</Link>
+                      <Link to='/chat'>消息</Link>
                       <Link to='/loginout' onClick={this.loginout.bind(this)}>登出</Link>
                     </>
                   )
