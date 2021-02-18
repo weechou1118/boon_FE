@@ -1,6 +1,14 @@
+/*
+ * @Description: 
+ * @Version: 1.0
+ * @Autor: zhou wei
+ * @Date: 2020-09-24 15:19:42
+ * @LastEditors: zhou wei
+ * @LastEditTime: 2021-02-18 14:34:47
+ */
 import axios from 'axios';
 import {BASE_URL} from '../../base'
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import localStorage from 'redux-persist/es/storage';
 import { RESET_USER_STATE } from '../../store/constants'
@@ -33,7 +41,8 @@ class Home extends Component {
   render() { 
     const styles = {'height': '1px','margin': '20px 0','boxShadow': '0 0 3px rgba(0, 0, 0, .2)'}
     return (  
-      <Fragment >
+      <>
+        <div className='sep40'></div>
         <div id="rightBar">
           {
             this.props.loginState === 1?
@@ -44,17 +53,17 @@ class Home extends Component {
 
           {
             this.props.loginState === 1?
-            <Fragment>
+            <>
               <div className='sep20'></div>
               <div className='inner reward'>
-                <i className='iconfont'>&#xe63c;</i>
-                &nbsp;领取今日的登录奖励
+                <i className='iconfont'>&#xeb7e;</i>
+                &nbsp;&nbsp;领取今日的登录奖励
               </div>
               <div style={styles}></div>
               <div className='inner'>
-                <span>我收藏的节点</span>
+                <span>我收藏的主题</span>
               </div>
-            </Fragment>
+            </>
             :
             null
           }
@@ -69,8 +78,7 @@ class Home extends Component {
         {/* 因为浮动特性, 需要将main放在浮动元素后面 */}
         {/* 子组件的props需要由父组件传入 */}
         <Main {...this.props}/>
-        
-      </Fragment>
+      </>
     );
   }
 }

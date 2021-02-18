@@ -18,7 +18,7 @@ export default function (loading) {//传过来一个函数
     };
     render () {
       let Com = this.state.Com;
-      return Com ? <Com /> : null;
+      return Com ? <Com {...this.props}/> : null;
     };
   };
 }

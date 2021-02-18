@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Version: 1.0
+ * @Autor: zhou wei
+ * @Date: 2021-01-04 10:06:25
+ * @LastEditors: zhou wei
+ * @LastEditTime: 2021-02-18 17:10:27
+ */
 import React, {
   Component
 } from 'react';
@@ -41,7 +49,7 @@ class TagsLine extends Component {
               this.state.comments.length>0?
               <span className='gray'>{this.state.comments.length}条回复&nbsp;·&nbsp;{this.state.replyTimeLast}</span>
               :
-              <span className='empty'>这篇文章还没有人评论噢~</span>  
+              <span className='empty'>这篇文章还没有人评论...</span>  
             }
           </div>
           {

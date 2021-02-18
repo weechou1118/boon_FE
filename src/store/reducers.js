@@ -4,7 +4,7 @@
  * @Autor: zhou wei
  * @Date: 2020-09-25 15:59:19
  * @LastEditors: zhou wei
- * @LastEditTime: 2021-02-02 17:41:30
+ * @LastEditTime: 2021-02-18 15:03:26
  */
 
 import * as constants from './constants'
@@ -22,7 +22,8 @@ const defaultState = {
     uId: '',
     nickname: '',
     loginTime: '',
-    level: 0    
+    level: 0,
+    clc: 0
   },
 }
 
@@ -62,6 +63,9 @@ export default (state = defaultState, action) => {
       return ns
     case constants.SET_CHAT_MESSAGE:
       ns.chatList['aToB'].push(action.msgData)
+      return ns
+    case constants.SET_COL_COUNT:
+      ns.userInfo.clc = action.data.clc
       return ns
     default:
       return state

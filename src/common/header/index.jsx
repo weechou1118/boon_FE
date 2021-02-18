@@ -77,13 +77,7 @@ class Header extends Component {
                 <Link to='/'>首页</Link>
                 {
                   this.props.loginState === 1?
-                  <NavLink to='/new'>开始创作！</NavLink>
-                  :
-                  null
-                }
-                {
-                  this.props.loginState === 1?
-                  <Link to='/'>
+                  <Link to={'/member/' + this.props.userInfo.nickname}>
                     <b>{this.props.userInfo.nickname}</b>
                   </Link>
                   :
@@ -99,9 +93,9 @@ class Header extends Component {
                   this.props.loginState ===1 ?
                   (
                     <>
-                      <Link to='/settingMe'>设定</Link>
                       <Link to='/chat'>消息</Link>
-                      <Link to='/loginout' onClick={this.loginout.bind(this)}>登出</Link>
+                      <Link to='/settingMe' className='iconfont'>&#xe60a;</Link>
+                      <Link to='/loginout' onClick={this.loginout.bind(this)} className='iconfont'>&#xe66e;</Link>
                     </>
                   )
                   :
@@ -114,8 +108,8 @@ class Header extends Component {
               <div className='avatar' onClick={this.showVerticalMenu.bind(this)}>
                 <img alt='' src={this.props.avatarUrl} />
                 <div className='verticalMenu hidden' ref={menu =>this.verticalMenuRef=menu}>
-                  <p><NavLink to='/settingMe'>个人主页</NavLink></p>
-                  <p><NavLink to='/new'>写文章</NavLink></p>
+                  <p><Link to='/settingMe'>个人主页</Link></p>
+                  <p><Link to='/new'>写文章</Link></p>
                   <p><Link to='/loginout' onClick={this.loginout.bind(this)}>登出</Link></p>
                 </div>
               </div>

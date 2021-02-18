@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @Version: 1.0
+ * @Autor: zhou wei
+ * @Date: 2020-10-29 15:14:26
+ * @LastEditors: zhou wei
+ * @LastEditTime: 2021-02-18 15:58:47
+ */
 import React, { Component } from 'react';
 import {connect} from 'react-redux'
 import MainDetail from '../../components/mainDetail'
@@ -8,7 +16,7 @@ import UnLoginMe from '../../components/unLoginMe'
 import './article.less'
 
 class Article extends Component {
-  render() { 
+  render() {
     return (
       <div className='container main-container'>
         <div className='sidebar'>

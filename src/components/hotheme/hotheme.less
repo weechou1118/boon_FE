@@ -10,11 +10,16 @@
     border-bottom: 1px solid #e2e2e2;
     &:not(:first-of-type):hover {
       background-color: #fcfcfc;
-      cursor: pointer;
     }
     td {
       vertical-align: middle;
       color: #778087;
+      a {
+        color: black;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
       img {
         border-radius: 2px;
       }
@@ -27,7 +32,6 @@
           color: #909090;
           font-size: 12px;
         }
-        // display: flex;
       }
     }
   }

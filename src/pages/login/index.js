@@ -39,6 +39,7 @@ class Login extends Component {
     })
   }
   componentDidMount() {
+    console.log(this.props)
     const flag = this.props.location.search.split('=').pop()
     if (flag === 'plzlogin') {
       notification.warning({
