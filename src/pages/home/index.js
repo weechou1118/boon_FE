@@ -4,7 +4,7 @@
  * @Autor: zhou wei
  * @Date: 2020-09-24 15:19:42
  * @LastEditors: zhou wei
- * @LastEditTime: 2021-02-18 14:34:47
+ * @LastEditTime: 2021-02-19 13:40:30
  */
 import axios from 'axios';
 import {BASE_URL} from '../../base'
@@ -96,5 +96,5 @@ const mapDispatchs = dispatch => {
     }
   }
 }
- 
+
 export default connect(mapStates, mapDispatchs)(Home);

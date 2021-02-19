@@ -113,7 +113,7 @@ class CommentNew extends Component {
             })
           }
         </ul>
-        <div className='cell'>添加新回复</div>
+        <div className='cell' style={{'fontSize': '20px','paddingBottom': '5px'}}>评论</div>
         <div className='cell'>
           <form id='replyBox' onSubmit={(e) => this.verifyForm(e)}>
             <input readOnly type="text" name='from_uid' value={this.props.uId} style={styles}/>

@@ -48,14 +48,18 @@ class Main extends Component {
       default:
         break;
     }
+    const params = {
+      pageNum
+    }
+    const type = this.props.history.location.search.split(/[?=]/).pop()
+    if (type) {
+      params.type = type
+    }
     axios.get(url, {
-      params: {
-        pageNum
-      }
+      params
     })
       .then(res => {
         const data = res.data.data
-        console.log(res.data.total)
         this.setState({
           news: data,
           total: res.data.total
@@ -138,7 +142,7 @@ class Main extends Component {
             this.state.news.map((item, index) => {
               return (
                 <div data-article-id={item.id} onClick={(e) => this.goArticle(e)} ref={div => this.vLink = div} to='/login' className='cell item' key={index}>
-                  <a onClick={(e) => {e.stopPropagation()}} href={'/member/' + item.author}>
+                  <a onClick={(e) => { e.stopPropagation() }} href={'/member/' + item.author}>
                     <img width='48' height='48' className='avatar' alt='' src={item.avatar} />
                   </a>
                   <div className='itemContent'>
@@ -154,7 +158,7 @@ class Main extends Component {
             })
           }
           {
-            this.state.total ? <Pagination onChange={this.reArticle} itemRender={this.itemRender.bind(this)} className='myPagination' size='small' total={this.state.total} pageSize={5}/> : null
+            this.state.total ? <Pagination onChange={this.reArticle} itemRender={this.itemRender.bind(this)} className='myPagination' size='small' total={this.state.total} pageSize={10} /> : null
           }
         </div>
       </div>
