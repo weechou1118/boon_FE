@@ -25,6 +25,12 @@ class Header extends Component {
         _this.headerRef.current.classList.remove('fixed');
       }
     }
+    this.tabActiveChange()
+  }
+  componentDidUpdate () {
+    this.tabActiveChange()
+  }
+  tabActiveChange() {
     const pathname = this.props.history.location.pathname
     const tab = this.props.history.location.search.split(/[?=]/).pop()
     if (pathname === '/') {

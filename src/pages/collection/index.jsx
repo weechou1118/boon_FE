@@ -10,9 +10,7 @@ class Collection extends Component {
     super(props);
     this.state = {}
   }
-  componentDidMount () {
-
-  }
+  
   render () {
     return (
       <>
@@ -28,7 +26,7 @@ class Collection extends Component {
           <div className='box'>
             <div className='cell'>
               <NavLink activeClassName='active' to='/collection/theme'>主题</NavLink>
-              &nbsp;&nbsp;
+              &nbsp;&nbsp;&nbsp;&nbsp;
               <NavLink activeClassName='active' to='/collection/following'>特别关注</NavLink>
             </div>
             <div className='cell'>
