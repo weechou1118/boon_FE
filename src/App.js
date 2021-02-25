@@ -4,7 +4,7 @@
  * @Autor: zhou wei
  * @Date: 2020-09-24 11:14:16
  * @LastEditors: zhou wei
- * @LastEditTime: 2021-02-04 16:27:40
+ * @LastEditTime: 2021-02-22 17:29:25
  */
 
 import React, { Suspense } from 'react';
@@ -56,6 +56,7 @@ function App (props) {
                   <Route exact path='/article/:id' component={Article}></Route>
                   <Route exact path='/new' component={New}></Route>
                   <Route exact path='/chat' component={Chat}></Route>
+                  <Route exact path='/chat/:mid' component={Chat}></Route>
                   <Route exact path='/collection/:where' component={Collection}></Route>
                   <Route path='/member/:nickname' component={Member}></Route>
                   <Route path='/settingMe' component={SettingMe}></Route>

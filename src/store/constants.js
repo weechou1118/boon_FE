@@ -4,7 +4,7 @@
  * @Autor: zhou wei
  * @Date: 2020-09-25 16:06:12
  * @LastEditors: zhou wei
- * @LastEditTime: 2021-02-18 14:40:19
+ * @LastEditTime: 2021-02-20 16:20:04
  */
 export const LOGIN_IN = 'login_in'
 export const LOGIN_OUT = 'login_out'
@@ -17,3 +17,4 @@ export const SET_NOTI = 'set_noti'
 export const TRUN_ZERO = 'turn_zero'
 export const SET_CHAT_MESSAGE = 'set_chat_message'
 export const SET_COL_COUNT = 'set_col_count'
+export const SET_FO_COUNT = 'set_fo_count'

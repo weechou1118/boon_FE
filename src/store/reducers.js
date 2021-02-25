@@ -4,7 +4,7 @@
  * @Autor: zhou wei
  * @Date: 2020-09-25 15:59:19
  * @LastEditors: zhou wei
- * @LastEditTime: 2021-02-18 15:03:26
+ * @LastEditTime: 2021-02-22 15:29:12
  */
 
 import * as constants from './constants'
@@ -23,7 +23,8 @@ const defaultState = {
     nickname: '',
     loginTime: '',
     level: 0,
-    clc: 0
+    clc: 0,
+    foc: 0
   },
 }
 
@@ -66,6 +67,9 @@ export default (state = defaultState, action) => {
       return ns
     case constants.SET_COL_COUNT:
       ns.userInfo.clc = action.data.clc
+      return ns
+    case constants.SET_FO_COUNT:
+      ns.userInfo.foc = action.data.foc
       return ns
     default:
       return state

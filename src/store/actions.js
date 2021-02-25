@@ -4,22 +4,22 @@
  * @Autor: zhou wei
  * @Date: 2020-09-25 16:15:18
  * @LastEditors: zhou wei
- * @LastEditTime: 2021-02-19 16:58:46
+ * @LastEditTime: 2021-02-24 15:56:30
  */
 import {
   SET_CHAT_MESSAGE,
-  SET_COL_COUNT
+  SET_COL_COUNT,
+  SET_FO_COUNT
 } from '../store/constants'
 import {
   BASE_URL
 } from '../base'
 import axios from 'axios'
-import io from 'socket.io-client'
 
-const socket = io('ws://localhost:3001')
-export const initNotiAction = (args) => {
+export const initNotiAction = (socket, cb) => {
   return dispatch => {
-    socket.on('init', data => {
+    socket.on('init', (data) => {
+      cb(data)
       dispatch({
         type: SET_CHAT_MESSAGE,
         msgData: data.content
@@ -27,7 +27,7 @@ export const initNotiAction = (args) => {
     })
   }
 }
-export const sendMessage = (args) => {
+export const sendMessage = (socket, args) => {
   return dispatch => {
     socket.send(args)
   }
@@ -43,6 +43,22 @@ export const setCollectionsCount = (uId) => {
         const data = res.data.data
         dispatch({
           type: SET_COL_COUNT,
+          data
+        })
+      })
+  }
+}
+export const setFollowCount = (uId) => {
+  return dispatch => {
+    axios.get(`${BASE_URL}/api/v2/user/focount`, {
+      params: {
+        uId
+      }
+    })
+      .then(res => {
+        const data = res.data.data
+        dispatch({
+          type: SET_FO_COUNT,
           data
         })
       })

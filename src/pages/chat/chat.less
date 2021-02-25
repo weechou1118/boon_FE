@@ -1,9 +1,126 @@
 .chatWrapper {
   width: 100%;
-  height: 300px;
+  height: 400px;
   background-color: #fff;
   border-radius: 5px;
-  .chatArea {
-    height: 200px;
+  width: 97%;
+  margin: 0 auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .2);
+
+  .chatList {
+    float: left;
+    width: 150px;
+    border-right: 1px solid #e4e5e6;
+    height: 100%;
+
+    .title {
+      color: #999999;
+      font-size: 12px;
+      border-bottom: 1px solid #e4e5e6;
+      padding: 5px 10px;
+    }
+
+    ul {
+      li {
+        &.active {
+          background-color: #e4e5e6;
+        }
+        padding: 15px;
+        display: flex;
+        align-items: center;
+
+        img {
+          width: 42px;
+          height: 42px;
+          border-radius: 50%;
+          margin-right: 10px;
+        }
+      }
+
+      li:hover {
+        background-color: #e4e5e6;
+        cursor: pointer;
+      }
+    }
   }
+
+  .chatArea {
+    overflow: hidden;
+    background-color: #f4f5f7;
+    height: 100%;
+    position: relative;
+
+    .nickname_title {
+      color: #000;
+      text-align: center;
+      background-color: #fff;
+      font-size: 14px;
+      border-bottom: 1px solid #e4e5e6;
+      padding: 5px 10px;
+      height: 36px;
+    }
+
+    #editor {
+      padding: 10px;
+      outline: none;
+      height: 80px;
+    }
+
+    .right.row {
+      text-align: right;
+      padding: 0 10px;
+
+      .sendBtn {
+        border-radius: 5px;
+        border: 0;
+        outline: none;
+        padding: 5px 20px;
+        color: #fff;
+        background-color: #ffc408;
+        cursor: pointer;
+      }
+    }
+
+    .chatBox {
+      height: 270px;
+      border-bottom: 1px solid #b4b4b4;
+      background-color: #f4f5f7;
+      overflow: hidden;
+
+      .messageArea {
+        height: 234px;
+        padding: 15px;
+        overflow-y: scroll;
+        box-sizing: border-box;
+      }
+
+      .aMessage {
+        margin-bottom: 15px;
+        display: flex;
+        &.isMe {
+          flex-direction: row-reverse;
+          .contentBox {
+            margin-right: 7px;
+          }
+        }
+
+        img {
+          width: 36px;
+          height: 36px;
+          border-radius: 50%;
+        }
+      }
+
+      .contentBox {
+        margin-left: 7px;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 5px;
+        display: flex;
+        align-items: center;
+        box-shadow: 0 0 3px rgba(0, 0, 0, .1);
+      }
+    }
+  }
+
 }

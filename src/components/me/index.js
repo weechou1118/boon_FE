@@ -64,7 +64,7 @@ class Me extends Component {
                 </td>
                 <td width='50%'>
                   <Link to='/collection/following'>
-                    <p>0</p>
+                    <p>{this.props.userInfo.foc}</p>
                     <p>特别关注</p>
                   </Link>
                 </td>
