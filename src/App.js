@@ -18,23 +18,23 @@ import { persistor } from './store'
 import Load from './utils/lazy'
 
 import Home from './pages/home'
-import Register from './pages/register'
-import LoginOut from './pages/loginout'
-import Activate from './pages/register/activate'
-import Success from './pages/register/success'
-import Article from './pages/article'
-import New from './pages/new'
-import SettingMe from './pages/settingMe'
-import NotFound from './pages/404'
-import Notifications from './pages/noti'
-import Login from './pages/login'
 
 import './wrapper.less'
 
 // const Login = lazy(() => import(/* webpackChunkName: "login" */'./pages/login'))
 // 懒加载
+let Login = Load(() => import('./pages/login'))
+let Register = Load(() => import('./pages/register'))
+let LoginOut = Load(() => import('./pages/loginout'))
+let Activate = Load(() => import('./pages/register/activate'))
+let Success = Load(() => import('./pages/register/success'))
+let Article = Load(() => import('./pages/article'))
+let New = Load(() => import('./pages/new'))
+let SettingMe = Load(() => import('./pages/settingMe'))
+let NotFound = Load(() => ('./pages/404'))
 let Chat = Load(() => import('./pages/chat'))
 let Member = Load(() => import('./pages/member'))
+let Notifications = Load(() => import('./pages/noti'))
 let Collection = Load(() => import('./pages/collection'))
 
 function App (props) {
