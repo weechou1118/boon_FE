@@ -125,6 +125,7 @@ class Header extends Component {
                   <div className='verticalMenu hidden' ref={menu => this.verticalMenuRef = menu}>
                     <p><Link to='/settingMe'>个人主页</Link></p>
                     <p><Link to='/new'>写文章</Link></p>
+                    <p><Link to='/chat'>消息</Link></p>
                     <p><Link to='/loginout' onClick={this.loginout.bind(this)}>登出</Link></p>
                   </div>
                 </div>
